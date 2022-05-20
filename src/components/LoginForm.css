@@ -1,0 +1,20 @@
+input {
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+form {
+    background-color: red;
+    border-radius: .4em;
+    padding: 2em;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.form-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

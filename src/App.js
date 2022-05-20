@@ -6,6 +6,7 @@ function App() {
     <div>
       <h1> This should show the home page</h1>
       {/*header*/}
+      
       {/*homepage*/}
     </div>
   );
