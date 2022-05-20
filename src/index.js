@@ -35,6 +35,9 @@ import FanManagement from './WebPages/FanManagement';
 import PullComics from './WebPages/PullPages/PullComics';
 import Admin from './WebPages/Admin';
 
+//import PullScription Logo
+import logo from './Images/logo.png'
+
 //import Login from './Login';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
@@ -42,6 +45,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //<Route path="/login" element={<Login/>} />
 root.render(
     <BrowserRouter>
+          <Link to="/">
+            <img src={logo} alt="Logo" width={500} height={150}/>
+          </Link>
         <Routes>
           
             <Route path="/" element={<App/>} />
