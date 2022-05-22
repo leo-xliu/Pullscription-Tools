@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import Data from '../Components/Data';
 import DataBase from '../Components/DataBase';
 import jokesData from '../Components/jokesData';
 import Joke from '../Components/Joke';
+import ReactDOM from 'react-dom/client';
+import ComicProfile from './ComicProfile';
 import {useState} from "react";
 
 export default function Inventory() {
@@ -32,12 +34,20 @@ export default function Inventory() {
     
     const [query, setQuery] = useState("")
 
+    // const root = ReactDOM.createRoot(document.getElementById('root'));
+    // root.render(
+    //     <BrowserRouter>
+    //         <Routes>
+    //             <Route path="/Inventory/ComicProfile" element={<ComicProfile props={data}/>} />
+    //         </Routes>
+    //     </BrowserRouter>
+    // )
+
     return (
         <div className="box">
-            <input placeholder="Enter Post Title" onChange={event => setQuery(event.target.value)} />
+            <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
             {
               //{dataComponents}  
-
                 DataBase.filter(data => {
                   if (query === '') {
                     return data;
@@ -47,7 +57,22 @@ export default function Inventory() {
                 }).map((data, index) => (
                   <div className="box" key={index}>
                     <p>{data.MAIN_DESC}</p>
-                    <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+                    {/*<p>{data.WRITER}</p>*/}
+                        {/* <BrowserRouter>
+                            <Routes>
+                                <Route path="/Inventory/ComicProfile" element={<ComicProfile props={data}/>} />
+                            </Routes>
+                        </BrowserRouter> */}
+                    <Link to="/Inventory/ComicProfile"
+                        state={{
+                            MAIN_DESC: data.MAIN_DESC,
+                            COVER_ARTIST: data.COVER_ARTIST,
+                            DIAMOND_NO: data.DIAMOND_NO,
+                            IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
+                        }}
+                    >
+                        <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+                    </Link>
                   </div>
                 ))
             }

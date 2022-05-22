@@ -31,7 +31,10 @@ import PullByUser from './WebPages/PullPages/PullByUser';
 import ProfileSettings from './WebPages/ProfileSettings';
 
 import Inventory from './WebPages/Inventory';
+
 import FanManagement from './WebPages/FanManagement';
+import ComicProfile from './WebPages/ComicProfile';
+
 import PullComics from './WebPages/PullPages/PullComics';
 import Admin from './WebPages/Admin';
 
@@ -39,7 +42,7 @@ import Admin from './WebPages/Admin';
 import PSLOGO from './Images/logo.png'
 
 //import Login from './Login';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useParams } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //<Route path="/login" element={<Login/>} />
@@ -61,9 +64,11 @@ root.render(
             <Route path="/ProfileSettings" element={<ProfileSettings />} />
 
             <Route path="/Inventory" element={<Inventory />} />
+                <Route path="/Inventory/ComicProfile" element={<ComicProfile />} />
+                {/* <Route path={"/Inventory/${data.MAIN_DESC}}"} element={<ComicProfile />} /> */}
 
             <Route path="/FanManagement" element={<FanManagement />} />
-
+          
             <Route path="/Admin" element={<Admin />} />
 
         </Routes>
