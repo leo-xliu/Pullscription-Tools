@@ -4,6 +4,7 @@ import Data from '../Components/Data';
 import DataBase from '../Components/DataBase';
 import jokesData from '../Components/jokesData';
 import Joke from '../Components/Joke';
+import {useState} from "react";
 
 export default function Inventory() {
 
@@ -28,10 +29,28 @@ export default function Inventory() {
         IMAGE_URL_MEDIUM_3x={data.IMAGE_URL_MEDIUM_3x} IMAGE_URL_ORIGINAL={data.IMAGE_URL_ORIGINAL}
         />
     })
-        
+    
+    const [query, setQuery] = useState("")
+
     return (
-        <div>
-            {dataComponents}
+        <div className="box">
+            <input placeholder="Enter Post Title" onChange={event => setQuery(event.target.value)} />
+            {
+              //{dataComponents}  
+
+                DataBase.filter(data => {
+                  if (query === '') {
+                    return data;
+                  } else if (data.MAIN_DESC.toLowerCase().includes(query.toLowerCase())) {
+                    return data;
+                  }
+                }).map((data, index) => (
+                  <div className="box" key={index}>
+                    <p>{data.MAIN_DESC}</p>
+                    <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+                  </div>
+                ))
+            }
         </div>
         
     )

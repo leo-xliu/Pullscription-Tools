@@ -36,7 +36,7 @@ import PullComics from './WebPages/PullPages/PullComics';
 import Admin from './WebPages/Admin';
 
 //import PullScription Logo
-import logo from './Images/logo.png'
+import PSLOGO from './Images/logo.png'
 
 //import Login from './Login';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
@@ -46,7 +46,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
           <Link to="/">
-            <img src={logo} alt="Logo" width={500} height={150}/>
+            <img src={PSLOGO} alt="Logo" width={500} height={150}/>
           </Link>
         <Routes>
           
