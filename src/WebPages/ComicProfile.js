@@ -24,6 +24,7 @@ export default function ComicProfile() {
                 DIAMOND_NO: {DIAMOND_NO}
             </h3>
             <img src={IMAGE_URL_SMALL} alt="Logos" />
+            <li><Link to="/Inventory">BACK</Link></li>
             <hr/>
         </div>
     )

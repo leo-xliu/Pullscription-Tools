@@ -1,3 +1,8 @@
+
+
+// THIS IS MAINALY FOR MY PRACTICE, NO SPECIFIC MEANING FOR MyComponent.js
+
+
 import React, { Component } from 'react';
 
 class MyComponent extends Component {

@@ -1,21 +1,3 @@
-/*
-import './App.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-//import './index.css';
-
-function App() {
-  return (
-    <div >
-      <h1>Hello World!</h1>
-    </div>
-    );
-}
-
-export default App;
-
-*/
-
 
 import React, { Component } from 'react';
 import MyComponent from './Components/MyComponent';
@@ -79,8 +61,8 @@ function App(){
 }
 */
 
-import Joke from "./Components/Joke"
-import jokesData from './Components/jokesData'
+//import Joke from "./Components/Joke"
+//import jokesData from './Components/jokesData'
 
 
 class App extends Component{
@@ -88,11 +70,11 @@ class App extends Component{
   constructor(){
     super()
     this.state = {
-      isLoggedIn: false,
-      counter: 0
+      isLoggedIn: false, // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
+      counter: 0 // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
     }
-    this.handleClick1 = this.handleClick1.bind(this)
-    this.handleClick2 = this.handleClick2.bind(this)
+    this.handleClick1 = this.handleClick1.bind(this) // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
+    this.handleClick2 = this.handleClick2.bind(this) // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
   }
 
   handleClick1(){
@@ -101,7 +83,7 @@ class App extends Component{
         isLoggedIn: true
       }
     )
-  }
+  } // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
 
   handleClick2(){
     this.setState(
@@ -109,55 +91,28 @@ class App extends Component{
         isLoggedIn: true
       }
     )
-  }
+  } // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
 
   render(){
 
-    let wordDisplay
+    // let wordDisplay
 
-    const jokesComponents = jokesData.map((joke)=>{
-      return <Joke key={joke.id} Question={joke.Question} Answer={joke.Answer}/>
-    })
+    // const jokesComponents = jokesData.map((joke)=>{
+    //   return <Joke key={joke.id} Question={joke.Question} Answer={joke.Answer}/>
+    // })
 
-    if(this.state.isLoggedIn === true && this.state.counter%2!==0){
-      wordDisplay = "IN"
-    }
-    else{
-      wordDisplay = "NOT IN"
-    }
+    // if(this.state.isLoggedIn === true && this.state.counter%2!==0){
+    //   wordDisplay = "IN"
+    // }
+    // else{
+    //   wordDisplay = "NOT IN"
+    // }
+    
+
+    // ACTUAL MAIN PAGE IMPLEMENTATION
     return(
       <div>
           <h1>Main Page!!</h1>
-          {/* <h3>
-            you are currently {wordDisplay}
-          </h3>
-          <h2>
-            {this.state.counter}
-          </h2>
-          <button onClick={this.handleClick1}>
-            Click Me increase!!
-          </button>
-          <br/>
-          <button onClick={this.handleClick2}>
-            Click Me decrease!!
-          </button>
-          <br/>
-            <button>
-              Rounter
-            </button>
-          <br/>
-          <button>
-            Pull Comics
-          </button>
-          <br/>
-          <button>
-            Fan Managment
-          </button>
-          <br/>
-          <button>
-            Admin
-          </button>
-          <br/> */}
           <div>
             <ul>
               <li><Link to="/CheckIn">CheckIn --></Link></li>
