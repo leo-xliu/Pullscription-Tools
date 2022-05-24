@@ -5,6 +5,9 @@ export default function ProfileSettings() {
     return (
         <div>
             <h1>Profile Settings!!</h1>
+            <h2>
+                username:    
+            </h2>
             <li><Link to="/">Main</Link></li>
         </div>
     )

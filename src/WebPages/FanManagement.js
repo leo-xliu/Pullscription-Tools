@@ -11,7 +11,15 @@ function RenderTable()
             return( 
                 
               <tr>
-                <td>{element.Name}</td>
+                <Link to="/FanManagement/FanProfile" 
+                  state={{
+                    NAME: element.Name,
+                    MARKS: element.Marks,
+                    PHONE: element.Phone,
+                }}
+                >
+                  <td>{element.Name}</td>
+                </Link>
                 <td>{element.Marks}</td>
                 <td>{element.Phone}</td>
               </tr>
@@ -26,7 +34,7 @@ function RenderTable()
           <Table hover>
               <thead>
                 <tr>    
-                  <th> Name</th>
+                  <th>Name</th>
                   <th>Marks</th>
                   <th>Phone</th>
                 </tr>
