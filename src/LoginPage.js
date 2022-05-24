@@ -12,6 +12,9 @@ function LoginPage() {
         password: "admin1"
     }
 
+    const employees = new Map();
+    employees.set("psemploy", "employ1");
+
     const [user, setUser] = useState({username: ""});
     const [error, setError] = useState("");
     
@@ -21,7 +24,11 @@ function LoginPage() {
             setUser({username: info.username});
             setError("");
         }
-        else if (info.username === adminUser.username){
+        else if (employees.get(info.username) === info.password){
+            setUser({username: info.username});
+            setError("");
+        }
+        else if (info.username === adminUser.username || employees.get(info.username) !== undefined){
             setError("Password does not match!");
         }
         else {
@@ -29,16 +36,14 @@ function LoginPage() {
         }
     }
 
-    const Logout = () => {
-        console.log("Logout");
-    }
+    // const Logout = () => {
+    // }
     
     return(
-        <div> 
+        <div classname="app"> 
             <div className="header"> 
-                <Link to="/"><img className="logo" src={logo} alt="Pullscription Tools Edition" /></Link>
+                <Link to="/"><img className="logo" title="return home" src={logo} alt="Pullscription Tools Edition" /></Link>
             </div>
-            
             {(user.username !== "") ? (navigate('/')) :
             (<LoginForm Login={Login} error={error} />)
             }
