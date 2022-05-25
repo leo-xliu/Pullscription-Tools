@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
-import LoginForm from './components/LoginForm';
+import LoginForm from '../components/LoginForm';
 import { Link, useNavigate } from "react-router-dom";
-import logo from './images/PSLOGO.png';
+import logo from '../images/PSLOGO.png';
 
 
 function LoginPage() {

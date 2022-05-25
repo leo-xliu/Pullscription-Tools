@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import ProfileBase from '../Components/ProfileBase';
+import ProfileBase from '../components/ProfileBase';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

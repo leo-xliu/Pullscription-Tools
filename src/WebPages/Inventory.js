@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
-import Data from '../Components/Data';
-import DataBase from '../Components/DataBase';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Data from '../components/Data';
+import DataBase from '../components/DataBase';
 import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState} from "react";
