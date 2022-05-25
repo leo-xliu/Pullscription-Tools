@@ -4,8 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import LoginPage from './LoginPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from './WebPages/LoginPage';
 
 //import webpages
 
@@ -23,26 +22,17 @@ import ComicProfile from './WebPages/ComicProfile';
 import PullComics from './WebPages/PullPages/PullComics';
 import Admin from './WebPages/Admin';
 
-//import PullScription Logo
-import PSLOGO from './Images/logo.png'
-
-//import Login from './Login';
-import { BrowserRouter, Route, Routes, Link, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 //<Route path="/login" element={<Login/>} />
 root.render(
     <BrowserRouter>
-          <Link to="/">
-            <img src={PSLOGO} alt="Logo" width={500} height={150}/>
-          </Link>
         <Routes>
-          
             <Route path="/" element={<App/>} />
-            <Route path="/login" element={<LoginPage/>} />
             <Route path="/CheckIn" element={<CheckIn />} />
-
+            <Route path="/login" element={<LoginPage/>} />
             <Route path="/PullComics" element={<PullComics />} />
                 <Route path="/PullComics/PullByWeek" element={<PullByWeek />} />
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
