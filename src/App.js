@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom/client';
 import './App.css';
 import { BrowserRouter as Router, Route, Link} 
         from "react-router-dom";
+import Header from "./Components/Header";
+
 
 /*
 class App extends Component {
@@ -113,21 +115,22 @@ class App extends Component{
     // ACTUAL MAIN PAGE IMPLEMENTATION
     return(
       <div>
-          <h1>Main Page!!</h1>
-          <div>
-            <ul>
-              <li><Link to="/CheckIn">CheckIn --></Link></li>
-
-              <li><Link to="/PullComics">Pull Comics --></Link></li>
-
-              <li><Link to="/ProfileSettings">Profile_Settings --></Link></li>
-
-              <li><Link to="/Inventory">Inventory --></Link></li>
-              
-              <li><Link to="/FanManagement">Fan_Management --></Link></li>
-              
-              <li><Link to="/Admin">Admin --></Link></li>
-            </ul>
+          <Header/>
+          <div className="main-menu">
+            <nav>
+              <ul>
+                <li><a className="menu-items" href="CheckIn">Check-In</a></li>
+                <li className="pullmenu"><a className="menu-items" href="PullComics">Pull Comics</a>
+                    <div class="pull-dropdown-content">
+                    <a href="PullByWeek">By Week</a>
+                    <a href="PullByUser">By User</a>
+                    </div>
+                </li>
+                <li><a className="menu-items" href="Inventory">Inventory</a></li>
+                <li><a className="menu-items" href="FanManagement">Fan Profiles</a></li>
+                <li><a className="menu-items" href="Admin">Admin</a></li>
+              </ul>
+            </nav>
           </div>
       </div>
     )

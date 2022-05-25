@@ -5,6 +5,8 @@ import DataBase from '../Components/DataBase';
 import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState} from "react";
+import Header from "../Components/Header";
+
 
 export default function Inventory() {
 
@@ -43,6 +45,7 @@ export default function Inventory() {
 
     return (
         <div className="box">
+        <Header/>
             <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
             {
               //{dataComponents}  

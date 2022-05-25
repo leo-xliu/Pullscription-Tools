@@ -1,0 +1,93 @@
+.main-menu {
+    width: 82.5%;
+    margin: 0 auto;
+    background-color: lightgray;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.main-menu::after {
+    content:'';
+    display: table;
+    clear: both
+}
+
+nav {
+    text-align: center;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 20px 55px;
+    padding-top: 15px;
+    position: relative;
+} 
+
+ul .menu-items{
+    color: rgb(29, 29, 29);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.25em;
+
+}
+
+ul a:hover {
+    color: black;
+}
+
+nav .menu-items::before {
+    content: '';
+    display: block;
+    height: 5px; 
+    width: 0%;
+    background-color: gray;
+    position: absolute;
+    top: 0;
+    border-radius: 8px;
+    transition: all ease-in-out .3s
+}
+
+nav .menu-items:hover::before {
+    width: 100%;
+}
+
+a[href="PullComics"] {
+    padding-bottom: 25px;
+}
+
+
+.pull-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    z-index: 1;
+  }
+
+  .pull-dropdown-content a {
+    color: rgb(24, 24, 24);
+    padding: 14px 1rem;
+    text-decoration: none;
+    display: block;
+  }
+
+  .pullmenu:hover .pull-dropdown-content {
+    display: block;
+  }
+
+  .pull-dropdown-content a:hover {
+      background-color: #f1f1f1;
+      border-radius: 6px;
+      color: black;
+    }

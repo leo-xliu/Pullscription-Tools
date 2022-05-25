@@ -1,0 +1,89 @@
+header{
+    display: flex;
+    align-items: center;
+    position: sticky;
+    background-color: rgb(238, 238, 238);
+}
+
+.logo-main {
+    width: 100%;
+    object-fit: contain;
+    max-width: 350px;
+}
+
+.header-user{
+    display: flex; 
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.35rem;
+    padding: 0.5rem;
+    padding-right: 1rem;
+    background-color:  lightgray;
+    border-radius: 6px;
+}
+
+.user-button{
+    display: flex; 
+    flex-direction:row;
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+}
+
+.user-button:hover{
+    color: black;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 59px;
+    background-color: #f9f9f9;
+    min-width: 1rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: rgb(24, 24, 24);
+    padding: 14px 1rem;
+    text-decoration: none;
+    display: block;
+  }
+
+  .header-user:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+      background-color: #f1f1f1;
+      border-radius: 6px;
+      color: black;
+    }
+
+
+.header-user:hover {
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+}
+
+.header-user .usericon{
+    width: 100%;
+    max-width: 50px;
+    
+}
+
+.user-greeting {
+    margin-left: 12px;
+    text-align: left;
+}
+.user-greeting h1{
+    font-size: 18px;
+    margin-bottom: 0px;
+    font-weight: 800;
+}
+
+.user-greeting p {
+    margin: 0px;
+    font-size: 18px;
+}
