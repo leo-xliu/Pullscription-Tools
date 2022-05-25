@@ -1,8 +1,8 @@
-
 import React, { Component } from 'react';
 import MyComponent from './Components/MyComponent';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Link, Switch} 
+import './App.css';
+import { BrowserRouter as Router, Route, Link} 
         from "react-router-dom";
 
 /*
@@ -40,6 +40,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 */
 
