@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import ProfileBase from '../components/ProfileBase';
+import ProfileBase from '../Components/ProfileBase';
 import Table from 'react-bootstrap/Table';
+import Header from "../Components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RenderTable()
@@ -22,7 +23,6 @@ function RenderTable()
 
     return(
         <div>
-            
           <Table hover>
               <thead>
                 <tr>    
@@ -43,6 +43,7 @@ export default function FanManagement() {
 
     return (
       <div>
+        <Header/>
         <h1 style={{ color: 'green' }}>Fan Management!!</h1>
         <li><Link to="/">Main</Link></li>
         <br></br>
