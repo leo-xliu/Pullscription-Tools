@@ -1,8 +1,17 @@
 header{
     display: flex;
     align-items: center;
+    top: 0;
     position: sticky;
+    position: -webkit-sticky;
     background-color: rgb(238, 238, 238);
+}
+
+/* if we go over 1630, we ignore this*/
+@media (max-width: 1630px){
+    header {
+        z-index: 1;
+    }
 }
 
 .logo-main {

@@ -132,6 +132,9 @@ class App extends Component{
               </ul>
             </nav>
           </div>
+          <div className="main-content">
+              <h1>Comics go here</h1> 
+          </div> 
       </div>
     )
   }
