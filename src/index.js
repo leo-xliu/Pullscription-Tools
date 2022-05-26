@@ -7,6 +7,8 @@ import App from './App';
 
 //import webpages
 
+//import Login from './LoginTo/login2';
+
 //import CheckInPages
 import CheckIn from './WebPages/CheckIn';
 import PullByWeek from './WebPages/PullPages/PullByWeek';
@@ -21,6 +23,8 @@ import FanProfile from './WebPages/FanProfile';
 import ComicProfile from './WebPages/ComicProfile';
 
 import PullComics from './WebPages/PullPages/PullComics';
+import PulledComics from './WebPages/PullPages/PulledComics';
+
 import Admin from './WebPages/Admin';
 
 //import PullScription Logo
@@ -45,6 +49,7 @@ root.render(
             <Route path="/PullComics" element={<PullComics />} />
                 <Route path="/PullComics/PullByWeek" element={<PullByWeek />} />
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
+                    <Route path="/PullComics/PullByUser/PulledComics" element={<PulledComics />} />
 
             <Route path="/ProfileSettings" element={<ProfileSettings />} />
 

@@ -24,7 +24,7 @@ export default function FanProfile() {
                 DIAMOND_NO: {PHONE}
             </h3>
             <img src={IMAGE_URL_SMALL} alt="Logos" />
-            <li><Link to="/Inventory">BACK</Link></li>
+            <li><Link to="/FanManagement">BACK</Link></li>
             <hr/>
         </div>
     )
