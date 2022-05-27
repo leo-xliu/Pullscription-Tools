@@ -1,6 +1,6 @@
 
 //initialize environment
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -24,15 +24,22 @@ import Admin from './WebPages/Admin';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+export const LoginContext = React.createContext();
 
-//<Route path="/login" element={<Login/>} />
-root.render(
+function Index() {
+  const [loggedIn, setLoggedin] = useState(false);
+
+  const handleLogin = info => {
+    setLoggedin(info);
+}
+
+  return (
+  <LoginContext.Provider value={loggedIn}>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>} />
             <Route path="/CheckIn" element={<CheckIn />} />
-            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/login" element={<LoginPage logged={handleLogin}/>} />
             <Route path="/PullComics" element={<PullComics />} />
                 <Route path="/PullComics/PullByWeek" element={<PullByWeek />} />
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
@@ -46,24 +53,15 @@ root.render(
             <Route path="/FanManagement" element={<FanManagement />} />
           
             <Route path="/Admin" element={<Admin />} />
-
-        </Routes>
-          {/* <div>
-            <ul>
-              <li><Link to="/">Main</Link></li>
-
-              <li><Link to="/CheckIn">CheckIn</Link></li>
-
-              <li><Link to="/PullComics">Pull Comics</Link></li>
-
-              <li><Link to="/ProfileSettings">Profile_Settings</Link></li>
-
-              <li><Link to="/Inventory">Inventory</Link></li>
-              
-              <li><Link to="/FanManagement">Fan_Management</Link></li>
-              
-              <li><Link to="/Admin">Admin</Link></li>
-            </ul>
-          </div> */}
+          </Routes>
     </BrowserRouter>
+  </LoginContext.Provider>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+//<Route path="/login" element={<Login/>} />
+root.render(
+    <Index/>
 );
