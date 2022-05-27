@@ -17,8 +17,8 @@ import ProfileSettings from './WebPages/ProfileSettings';
 
 import Inventory from './WebPages/Inventory';
 
-import FanManagement from './WebPages/FanManagement';
-import FanProfile from './WebPages/FanProfile';
+import FanManagement from './WebPages/FanManagements/FanManagement';
+import FanProfile from './WebPages/FanManagements/FanProfile';
 
 import ComicProfile from './WebPages/ComicProfile';
 
