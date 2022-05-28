@@ -72,10 +72,10 @@ export default function Inventory() {
     ))
 
     console.log({inventoryComics})
-
+    var newComics = inventoryComics
     const indexOfLastComics = currentPage * comicsPerPage
     const indexOfFirstComics = indexOfLastComics - comicsPerPage
-    const currentComics = inventoryComics.slice(indexOfFirstComics, indexOfLastComics)
+    const currentComics = newComics.slice(indexOfFirstComics, indexOfLastComics)
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
