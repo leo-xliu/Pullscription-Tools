@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from "../Components/Header";
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import { useState } from "react";
@@ -7,6 +8,7 @@ import Papa from "papaparse";
 export default function CheckIn() {
     return (
         <div>
+            <Header/>
             <h1>CheckIn Page!!</h1>
             {CSV()}
             <li><Link to="/">Main</Link></li>

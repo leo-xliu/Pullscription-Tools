@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Data from '../Components/Data';
 import DataBase from '../Components/DataBase';
 import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState} from "react";
-import axios from 'axios';
 import Pagination from '../Components/PaginationFeature/Pagination'
+import Header from "../Components/Header";
+
 
 export default function Inventory() {
 
@@ -80,6 +81,7 @@ export default function Inventory() {
 
     return (
         <div className="box">
+        <Header/>
             <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
             {
               <div>
