@@ -5,8 +5,8 @@ export default function ComicProfile() {
 
     const location = useLocation()
     const MAIN_DESC = location.state.MAIN_DESC
-    console.log(MAIN_DESC)
-    console.log(location.state.MAIN_DESC)
+    //console.log(MAIN_DESC)
+    //console.log(location.state.MAIN_DESC)
     const COVER_ARTIST = location.state.COVER_ARTIST
     const DIAMOND_NO = location.state.DIAMOND_NO
     const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
