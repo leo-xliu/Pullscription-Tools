@@ -34,6 +34,7 @@ export default function FanProfile() {
                             <h3 style={{display: pulledComicsIMG ? "block" : "none"}}>
                                 pulledComicsIMG: {pulledComicsIMG}
                             </h3>
+                            <h6>{PULLEDCOMICS.MAIN_DESC}</h6>
                         </div>
     
     var displayPCSAI = <h3 style={{display: pulledComicsSetAside ? "block" : "none"}}>
@@ -44,6 +45,7 @@ export default function FanProfile() {
                             <h3 style={{display: fullfilledComicsIMG ? "block" : "none"}}>
                                 fullfilledComicsIMG: {fullfilledComicsIMG}
                             </h3>
+                            <h6>{PULLEDCOMICS.MAIN_DESC}</h6>
                         </div>
 
     var displayNFFCI = <h3 style={{display: neverfullfilledComicsIMG ? "block" : "none"}}>

@@ -6,8 +6,7 @@ import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState} from "react";
 import axios from 'axios';
-//import Pagination from './Pagination';
-import Pagination from './Pagination'
+import Pagination from '../Components/PaginationFeature/Pagination'
 
 export default function Inventory() {
 
