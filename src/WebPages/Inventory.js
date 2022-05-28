@@ -5,6 +5,8 @@ import DataBase from '../Components/DataBase';
 import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState} from "react";
+import axios from 'axios';
+import Pagination from './Pagination';
 
 export default function Inventory() {
 
@@ -31,6 +33,8 @@ export default function Inventory() {
     })
     
     const [query, setQuery] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
+    const [comicsPerPage, setComicsPerPage] = useState(10)
 
     // const root = ReactDOM.createRoot(document.getElementById('root'));
     // root.render(
@@ -41,39 +45,52 @@ export default function Inventory() {
     //     </BrowserRouter>
     // )
 
+
+    // list of filtered InvetoryComics Books
+    var inventoryComics = DataBase.filter(data => {
+      if (query === '') {
+        return data;
+      } else if (data.MAIN_DESC.toLowerCase().includes(query.toLowerCase())) {
+        return data;
+      }
+    }).map((data, index) => (
+      <div className="box" key={index}>
+        <Link to="/Inventory/ComicProfile"
+            state={{
+                MAIN_DESC: data.MAIN_DESC,
+                COVER_ARTIST: data.COVER_ARTIST,
+                DIAMOND_NO: data.DIAMOND_NO,
+                IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
+            }}
+        >
+            <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+        </Link>
+        <h6>{data.PUBLISHER}</h6>
+        <h3>{data.MAIN_DESC}</h3>
+      </div>
+    ))
+
+    console.log({inventoryComics})
+
+    const indexOfLastComics = currentPage * comicsPerPage
+    const indexOfFirstComics = indexOfLastComics - comicsPerPage
+    const currentComics = inventoryComics.slice(indexOfFirstComics, indexOfLastComics)
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
     return (
         <div className="box">
             <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
             {
-              //{dataComponents}  
-                DataBase.filter(data => {
-                  if (query === '') {
-                    return data;
-                  } else if (data.MAIN_DESC.toLowerCase().includes(query.toLowerCase())) {
-                    return data;
-                  }
-                }).map((data, index) => (
-                  <div className="box" key={index}>
-                    <p>{data.MAIN_DESC}</p>
-                    {/*<p>{data.WRITER}</p>*/}
-                        {/* <BrowserRouter>
-                            <Routes>
-                                <Route path="/Inventory/ComicProfile" element={<ComicProfile props={data}/>} />
-                            </Routes>
-                        </BrowserRouter> */}
-                    <Link to="/Inventory/ComicProfile"
-                        state={{
-                            MAIN_DESC: data.MAIN_DESC,
-                            COVER_ARTIST: data.COVER_ARTIST,
-                            DIAMOND_NO: data.DIAMOND_NO,
-                            IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
-                        }}
-                    >
-                        <img src={data.IMAGE_URL_SMALL} alt="Logo" />
-                    </Link>
-                  </div>
-                ))
+              <div>
+                {currentComics}
+              </div>
             }
+            <Pagination 
+                comicsPerPage={comicsPerPage}
+                totalComics={inventoryComics.length}
+                paginate = {paginate}
+            />
         </div>
         
     )
@@ -85,3 +102,28 @@ export default function Inventory() {
         </div>
     )*/
 }
+
+
+/*
+DataBase.filter(data => {
+  if (query === '') {
+    return data;
+  } else if (data.MAIN_DESC.toLowerCase().includes(query.toLowerCase())) {
+    return data;
+  }
+}).map((data, index) => (
+  <div className="box" key={index}>
+    <p>{data.MAIN_DESC}</p>
+    <Link to="/Inventory/ComicProfile"
+        state={{
+            MAIN_DESC: data.MAIN_DESC,
+            COVER_ARTIST: data.COVER_ARTIST,
+            DIAMOND_NO: data.DIAMOND_NO,
+            IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
+        }}
+    >
+        <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+    </Link>
+  </div>
+))
+*/
