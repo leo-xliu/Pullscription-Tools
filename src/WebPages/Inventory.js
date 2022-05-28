@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState} from "react";
 import axios from 'axios';
-import Pagination from './Pagination';
+//import Pagination from './Pagination';
+import Pagination from './Pagination'
 
 export default function Inventory() {
 
@@ -87,9 +88,13 @@ export default function Inventory() {
               </div>
             }
             <Pagination 
-                comicsPerPage={comicsPerPage}
+                /*comicsPerPage={comicsPerPage}
                 totalComics={inventoryComics.length}
-                paginate = {paginate}
+                paginate = {paginate}*/
+                currentPage={currentPage}
+                totalSize={inventoryComics.length}
+                changeCurrentPage={setCurrentPage}
+                theme="bootstrap"
             />
         </div>
         
