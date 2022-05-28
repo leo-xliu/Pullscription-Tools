@@ -8,6 +8,8 @@ import LoginPage from './WebPages/LoginPage';
 
 //import webpages
 
+//import Login from './LoginTo/login2';
+
 //import CheckInPages
 import CheckIn from './WebPages/CheckIn';
 import PullByWeek from './WebPages/PullPages/PullByWeek';
@@ -16,10 +18,14 @@ import ProfileSettings from './WebPages/ProfileSettings';
 
 import Inventory from './WebPages/Inventory';
 
-import FanManagement from './WebPages/FanManagement';
+import FanManagement from './WebPages/FanManagements/FanManagement';
+import FanProfile from './WebPages/FanManagements/FanProfile';
+
 import ComicProfile from './WebPages/ComicProfile';
 
 import PullComics from './WebPages/PullPages/PullComics';
+import PulledComics from './WebPages/PullPages/PulledComics';
+
 import Admin from './WebPages/Admin';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -43,15 +49,18 @@ function Index() {
             <Route path="/PullComics" element={<PullComics />} />
                 <Route path="/PullComics/PullByWeek" element={<PullByWeek />} />
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
+                    <Route path="/PullComics/PullByUser/PulledComics" element={<PulledComics />} />
 
             <Route path="/ProfileSettings" element={<ProfileSettings />} />
+
 
             <Route path="/Inventory" element={<Inventory />} />
                 <Route path="/Inventory/ComicProfile" element={<ComicProfile />} />
                 {/* <Route path={"/Inventory/${data.MAIN_DESC}}"} element={<ComicProfile />} /> */}
 
             <Route path="/FanManagement" element={<FanManagement />} />
-          
+                <Route path="/FanManagement/FanProfile" element={<FanProfile />} />
+
             <Route path="/Admin" element={<Admin />} />
           </Routes>
     </BrowserRouter>

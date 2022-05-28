@@ -8,6 +8,9 @@ export default function ProfileSettings() {
         <div>
             <Header/>
             <h1>Profile Settings!!</h1>
+            <h2>
+                username:    
+            </h2>
             <li><Link to="/">Main</Link></li>
         </div>
     )
