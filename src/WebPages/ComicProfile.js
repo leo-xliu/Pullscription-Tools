@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { LoginContext } from '../index';
+import Header from '../Components/Header';
 
 export default function ComicProfile() {
 
@@ -16,14 +18,18 @@ export default function ComicProfile() {
     const AUTHOR = location.state.AUTHOR
     
 
-    return(
-        
-        <div>        
+
+    const loggedIn = useContext(LoginContext)
+
+    return(       
+            
+        <div>   
+            <Header loggedIn={loggedIn} user={"User"} /> 
             <img src={IMAGE_URL_SMALL} alt="Logos" /> 
 
             <h6 style={{display: PUBLISHER ? "block" : "none"}}>
                 {PUBLISHER}
-            </h6>
+            </h6>  
             <h3 style={{display: MAIN_DESC ? "block" : "none"}}>
                 {MAIN_DESC}
             </h3>
@@ -45,7 +51,7 @@ export default function ComicProfile() {
             </h5>
             
             <li><Link to="/Inventory">BACK</Link></li>
-            <hr/>
+        
         </div>
     )
 }

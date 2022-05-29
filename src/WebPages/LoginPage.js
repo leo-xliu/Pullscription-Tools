@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../Images/PSLOGO.png';
 
 
-function LoginPage() {
+function LoginPage({logged, admin}) {
     let navigate = useNavigate();
     const adminUser = {
         username:"psadmin",
@@ -19,13 +19,15 @@ function LoginPage() {
     const [error, setError] = useState("");
     
     const Login = info => {
-        console.log(info);
         if (info.username === adminUser.username && info.password === adminUser.password){
             setUser({username: info.username});
+            logged(true);
+            admin(true);
             setError("");
         }
         else if (employees.get(info.username) === info.password){
             setUser({username: info.username});
+            logged(true);
             setError("");
         }
         else if (info.username === adminUser.username || employees.get(info.username) !== undefined){
@@ -35,12 +37,9 @@ function LoginPage() {
             setError("User does not exist!");
         }
     }
-
-    // const Logout = () => {
-    // }
     
     return(
-        <div classname="app"> 
+        <div> 
             <div className="header"> 
                 <Link to="/"><img className="logo" title="return home" src={logo} alt="Pullscription Tools Edition" /></Link>
             </div>
