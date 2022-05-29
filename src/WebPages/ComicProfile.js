@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { LoginContext } from '../index';
+import Header from '../Components/Header';
 
 export default function ComicProfile() {
 
@@ -11,9 +13,13 @@ export default function ComicProfile() {
     const DIAMOND_NO = location.state.DIAMOND_NO
     const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
 
+
+    const loggedIn = useContext(LoginContext)
+
     return(
         
-        <div>         
+        <div>   
+            <Header loggedIn={loggedIn} user={"User"} />   
             <h3 style={{display: MAIN_DESC ? "block" : "none"}}>
                 MAIN_DESC: {MAIN_DESC}
             </h3>

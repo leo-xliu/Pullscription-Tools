@@ -13,7 +13,9 @@ Default
   li.page.disabled {
     cursor: default;
     pointer-events: none;
-    color: #999999;
+    color: gray;
+    background-color: #e9e9e9;
+
   }
   
   .react-pagination-js-default .page {
@@ -30,6 +32,7 @@ Default
     color: #717171;
     text-shadow: 0px 1px 0px rgba(255,255,255, 1);
     cursor: pointer;
+
   }
   .react-pagination-js-default .is-active {
     display: inline-block;
@@ -45,6 +48,7 @@ Default
     color: #f0f0f0;
     text-shadow: 0px 0px 3px rgba(0,0,0, .5);
     cursor: pointer;
+
   }
   .react-pagination-js-default .pageElli {
     display: inline-block;
@@ -54,6 +58,7 @@ Default
     font-weight: bold;
     text-decoration: none;
     color: #717171;
+
   }
   
   
@@ -69,6 +74,7 @@ Default
     box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
     color: #f0f0f0;
     text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+
   }
   
   /**
@@ -171,7 +177,9 @@ Default
     border: 1px solid #ddd;
     border-left-width: 0;
     cursor: pointer;
-    color: #0088cc;
+    color: black;
+    font-weight: 600;
+    background-color: white;
   }
   .react-pagination-js-bootstrap .is-active {
     float: left;
@@ -180,9 +188,12 @@ Default
     text-decoration: none;
     border: 1px solid #ddd;
     border-left-width: 0;
-    color: #999999;
+    color: gray;
     background-color: #f5f5f5;
     cursor: default;
+    font-weight: 600;
+    
+
   }
   .react-pagination-js-bootstrap .pageElli {
     float: left;
@@ -191,9 +202,10 @@ Default
     text-decoration: none;
     border: 1px solid #ddd;
     border-left-width: 0;
-    color: #999999;
+    color: black;
     cursor: default;
-  
+    background-color: white;
+
   }
   
   
@@ -204,6 +216,7 @@ Default
   .react-pagination-js-bootstrap .page.active {
     color: #999999;
     cursor: default;
+
   }
   
   
