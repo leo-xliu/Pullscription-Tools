@@ -18,7 +18,7 @@ input, button {
     justify-content: center;
 }
 
-form {
+.form-page {
     display: block;
     position: relative;
     background-color: rgb(233, 233, 233);
@@ -30,14 +30,14 @@ form {
     margin-top: 50px;
 }
 
-form h1 {
+.form-page h1 {
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 25px;
     text-align: center;
 }
 
-form .form-section {
+.form-page .form-section {
     display: block;
     width: 300px;
     margin-bottom: 20px;
@@ -55,7 +55,7 @@ form .form-section {
     color: #EB1E25;
 }
 
-form .form-section input {
+.form-page .form-section input {
     display: block;
     width: 100%;
     height: 32px;
@@ -66,17 +66,17 @@ form .form-section input {
     transition: 0.3s;
 }
 
-form .form-section input:focus {
+.form-page .form-section input:focus {
     box-shadow: 0px 0px 3px #EB1E25;
 }
 
-form .errorMessage {
+.form-page .errorMessage {
     color: #EB1E25;
     margin-bottom: 10px;
     font-size: 14px;
 }
 
-form input[type="submit"] {
+.form-page input[type="submit"] {
     display: inline-block;
     padding: 10px 15px;
     border-radius: 8 px;
@@ -90,7 +90,7 @@ form input[type="submit"] {
     font-size: 18px;
 }
 
-form input[type="submit"]:hover {
+.form-page input[type="submit"]:hover {
     box-shadow: 0px 0px 3px #EB1E25;
     color: #EB1E25;
 }
