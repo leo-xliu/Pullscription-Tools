@@ -16,7 +16,7 @@ function App() {
             <nav>
               <ul>
                 <li><Link className="menu-items" to={(loggedIn === true) ? '/CheckIn' : '/login'} >Check-In</Link></li>
-                <li className="pullmenu"><Link className="menu-items" to={(loggedIn === true) ? '/CheckIn/PullByUser' : '/login'}>Pull Comics</Link>
+                <li className="pullmenu"><Link className="menu-items" to={(loggedIn === true) ? '/PullComics/PullByUser' : '/login'}>Pull Comics</Link>
                     {/* <div class="pull-dropdown-content">
                     <a href="PullByWeek">By Week</a>
                     <a href="PullByUser">By User</a>
@@ -25,7 +25,7 @@ function App() {
                 </li>
                 <li><Link className="menu-items" to={(loggedIn === true) ? '/Inventory' : '/login'}>Inventory</Link></li>
                 <li><Link className="menu-items" to={(loggedIn === true) ? '/FanManagement' : '/login'}>Fan Profiles</Link></li>
-                {(loggedIn=true) ? <li><Link className="menu-items" to='/Admin'>Admin</Link></li> : ""}
+                {(loggedIn === true) ? <li><Link className="menu-items" to='/Admin'>Admin</Link></li> : ""}
               </ul>
             </nav>
           </div>
