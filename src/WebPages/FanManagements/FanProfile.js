@@ -10,9 +10,9 @@ export default function FanProfile() {
     const NAME = location.state.NAME
     console.log(NAME)
     //console.log(location.state.MAIN_DESC)
-    const PULLEDCOMICS = location.state.PULLEDCOMICS
+    var PULLEDCOMICS = location.state.PULLEDCOMICS
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
-    const FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
+    var FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
     const NEVERFULLFILLEDCOMICS = location.state.NEVERFULLFILLEDCOMICS
 
     //var dynamicPULLEDCOMICS = PULLEDCOMICS
@@ -21,7 +21,7 @@ export default function FanProfile() {
 
     var displayPCSAI = FanComicsMapping(PULLEDCOMICSSETASIDE)
 
-    var displayFFCI = FanComicsMapping(FULLFILLEDCOMICS)
+    var displayFFCI = FanComicsMapping(FULLFILLEDCOMICS, 1, FULLFILLEDCOMICS)
 
     var diaplayNFFCI = FanComicsMapping(NEVERFULLFILLEDCOMICS)
 
@@ -82,6 +82,11 @@ export default function FanProfile() {
     const [Sort, setSort] = useState(false)
     const [Removed, setRemoved] = useState(false)
     const [markFullFilled, setMarkFullFilled] = useState(false)
+    //const [totalComics, setTotalComics] = useState(0)
+    //const [purchaseRatio, setPurchaseRatio] = useState(0)
+
+    //setTotalComics(PULLEDCOMICS.length + PULLEDCOMICSSETASIDE.length + FULLFILLEDCOMICS.length + NEVERFULLFILLEDCOMICS.length)
+  //  setPurchaseRatio(((totalComics - NEVERFULLFILLEDCOMICS.length) / totalComics)*100)
     //const [dynamicPULLEDCOMICS, setdynamicPULLEDCOMICS] = useState(PULLEDCOMICS)
 
     //setdynamicPULLEDCOMICS()
@@ -176,7 +181,8 @@ export default function FanProfile() {
       
       console.log(list)
     */
-
+   //console.log("FullFilledLength: ")
+    //console.log(FULLFILLEDCOMICS.length)
     return(
         
         <div>      
@@ -194,10 +200,10 @@ export default function FanProfile() {
             <button onClick={pulledClick}>Pulled</button>
             {(Pulled) ? <div>{displayPCI}</div> : <div></div>}
 
-            {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
+            {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
                 {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
             {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
-                {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>}
+                {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
 
             <button onClick={fullfilledClick}>Fullfilled</button>
             {(Fullfilled) ? <div>{displayFFCI}</div> : <div></div>}

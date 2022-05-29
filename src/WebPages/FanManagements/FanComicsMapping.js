@@ -18,12 +18,17 @@ export default function FanComicsMapping(props, arg, props2) {
     const addImage = (PS_NO) => {
         // this is the line that you are looking for
         setPics((oldState) => oldState.filter((item) => item.PS_NO !== PS_NO));
-        props2.push(pics.filter((item) => item.PS_NO === PS_NO))
+       // console.log(props2.length)
+        props2.push(pics.filter((item) => item.PS_NO === PS_NO)[0])
+       // console.log(props2.length)
+        console.log(props2)
       };
+
       useEffect(() => {
         //fake fetch data
         setPics(props);
       }, []);
+
 //<button onClick={() => removeImage(image.PS_NO)}>X</button>
     var myProps = pics.map(function(image) {
         return (<div>
@@ -38,7 +43,11 @@ export default function FanComicsMapping(props, arg, props2) {
 
     return(
         
-        <div>         
+        <div>
+            {/* {(arg==0) ? console.log("pics length pulled: ") : ""}
+            {(arg==0) ? console.log(myProps.length)  : ""}     
+            {(arg==1) ? console.log("pics length fullfiled: ") : ""}
+            {(arg==1) ? console.log(myProps.length)  : ""}  */}
            {myProps}
         </div>
     )
