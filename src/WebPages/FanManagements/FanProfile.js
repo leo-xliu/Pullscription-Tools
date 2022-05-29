@@ -10,20 +10,25 @@ export default function FanProfile() {
     const NAME = location.state.NAME
     console.log(NAME)
     //console.log(location.state.MAIN_DESC)
-    var PULLEDCOMICS = location.state.PULLEDCOMICS
+    const PULLEDCOMICS = location.state.PULLEDCOMICS
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
-    var FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
+    const FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
     const NEVERFULLFILLEDCOMICS = location.state.NEVERFULLFILLEDCOMICS
 
     //var dynamicPULLEDCOMICS = PULLEDCOMICS
 
-    var displayPCI = FanComicsMapping(PULLEDCOMICS, 0, FULLFILLEDCOMICS)
+    var displayPCI = FanComicsMapping(PULLEDCOMICSSETASIDE, 0, FULLFILLEDCOMICS)
 
-    var displayPCSAI = FanComicsMapping(PULLEDCOMICSSETASIDE)
+    //var displayPCSAI = FanComicsMapping(PULLEDCOMICSSETASIDE)
 
     var displayFFCI = FanComicsMapping(FULLFILLEDCOMICS, 1, FULLFILLEDCOMICS)
 
-    var diaplayNFFCI = FanComicsMapping(NEVERFULLFILLEDCOMICS)
+    //var diaplayNFFCI = FanComicsMapping(NEVERFULLFILLEDCOMICS)
+
+    console.log("PulledComics Length: ")
+    console.log(PULLEDCOMICS.length)
+    console.log("FullFilledComics Length: ")
+    console.log(FULLFILLEDCOMICS.length)
 
     // var pulledComicsIMG = PULLEDCOMICS.map(function(image) {
     //     return (<div>
@@ -113,15 +118,15 @@ export default function FanProfile() {
         setPulled(false)
     }
 
-    function removedClick() {
-        setRemoved(!Removed)
-        setMarkFullFilled(false)
-    }
+    // function removedClick() {
+    //     setRemoved(!Removed)
+    //     setMarkFullFilled(false)
+    // }
 
-    function markFullFilledClick() {
-        setMarkFullFilled(!markFullFilled)
-        setRemoved(false)
-    }
+    // function markFullFilledClick() {
+    //     setMarkFullFilled(!markFullFilled)
+    //     setRemoved(false)
+    // }
     //const fullfilledClick = () => setFullfilled(!Fullfilled)
 
     const sortClick = () => setSort(!Sort)
@@ -161,13 +166,14 @@ export default function FanProfile() {
           );
     }
 */
-    function removedFunction(){
 
-    }
+    // function removedFunction(){
 
-    function markFullFilledFunction(){
+    // }
 
-    }
+    // function markFullFilledFunction(){
+
+    // }
 
 
    /*
@@ -187,13 +193,15 @@ export default function FanProfile() {
         
         <div>      
             
-            <button onClick={sortClick}>Sort</button>
+            {/* <button onClick={sortClick}>Sort</button>
                 {Sorting}
-                {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)}
+                {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
                 
             <h3 style={{display: NAME ? "block" : "none"}}>
                 {NAME}
             </h3>
+
+            <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
 
             <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
 

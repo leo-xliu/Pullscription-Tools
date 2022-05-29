@@ -60,8 +60,11 @@ export default function Inventory() {
             state={{
                 MAIN_DESC: data.MAIN_DESC,
                 COVER_ARTIST: data.COVER_ARTIST,
-                DIAMOND_NO: data.DIAMOND_NO,
                 IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
+                PUBLISHER: data.PUBLISHER,
+                STREET_DATE: data.STREET_DATE,
+                ARTIST: data.ARTIST,
+                AUTHOR: data.WRITER
             }}
         >
             <img src={data.IMAGE_URL_SMALL} alt="Logo" />
