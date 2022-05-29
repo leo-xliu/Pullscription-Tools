@@ -31,21 +31,29 @@ import Admin from './WebPages/Admin';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export const LoginContext = React.createContext();
+export const AdminContext = React.createContext();
+
 
 function Index() {
   const [loggedIn, setLoggedin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleLogin = info => {
     setLoggedin(info);
 }
 
+  const handleAdmin = info => {
+    setIsAdmin(info);
+  }
+
   return (
   <LoginContext.Provider value={loggedIn}>
+  <AdminContext.Provider value={isAdmin}>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>} />
             <Route path="/CheckIn" element={<CheckIn />} />
-            <Route path="/login" element={<LoginPage logged={handleLogin}/>} />
+            <Route path="/login" element={<LoginPage logged={handleLogin} admin={handleAdmin}/>} />
             <Route path="/PullComics" element={<PullComics />} />
                 {/* <Route path="/PullComics/PullByWeek" element={<PullByWeek />} /> */}
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
@@ -64,6 +72,7 @@ function Index() {
             <Route path="/Admin" element={<Admin />} />
           </Routes>
     </BrowserRouter>
+  </AdminContext.Provider>
   </LoginContext.Provider>
   )
 }

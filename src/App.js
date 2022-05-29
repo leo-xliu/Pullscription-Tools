@@ -3,12 +3,13 @@ import MyComponent from './Components/MyComponent';
 import ReactDOM from 'react-dom/client';
 import './App.css';
 import Header from "./Components/Header";
-import {LoginContext} from './index';
+import {LoginContext, AdminContext} from './index';
 import { Link} from 'react-router-dom';
 
 
 function App() {
     const loggedIn = useContext(LoginContext)
+    const isAdmin = useContext(AdminContext)
     return(
       <div>
           <Header loggedIn={loggedIn} /* want this to display user's name */ user={"User"} />
@@ -25,7 +26,7 @@ function App() {
                 </li>
                 <li><Link className="menu-items" to={(loggedIn === true) ? '/Inventory' : '/login'}>Inventory</Link></li>
                 <li><Link className="menu-items" to={(loggedIn === true) ? '/FanManagement' : '/login'}>Fan Profiles</Link></li>
-                {(loggedIn === true) ? <li><Link className="menu-items" to='/Admin'>Admin</Link></li> : ""}
+                {(isAdmin === true) ? <li><Link className="menu-items" to='/Admin'>Admin</Link></li> : ""}
               </ul>
             </nav>
           </div>
