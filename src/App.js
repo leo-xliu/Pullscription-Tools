@@ -1,10 +1,10 @@
-
-import React, { Component } from 'react';
+import React, {useContext}from 'react';
 import MyComponent from './Components/MyComponent';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Link, Switch} 
-        from "react-router-dom";
-
+import './App.css';
+import Header from "./Components/Header";
+import {LoginContext} from './index';
+import { Link} from 'react-router-dom';
 /*
 class App extends Component {
   constructor(props) {
@@ -40,6 +40,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 */
 
@@ -64,73 +65,31 @@ function App(){
 //import Joke from "./Components/Joke"
 //import jokesData from './Components/jokesData'
 
-
-class App extends Component{
-
-  constructor(){
-    super()
-    this.state = {
-      isLoggedIn: false, // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
-      counter: 0 // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
-    }
-    this.handleClick1 = this.handleClick1.bind(this) // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
-    this.handleClick2 = this.handleClick2.bind(this) // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
-  }
-
-  handleClick1(){
-    this.setState(
-      {counter: this.state.counter + 1, 
-        isLoggedIn: true
-      }
-    )
-  } // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
-
-  handleClick2(){
-    this.setState(
-      {counter: this.state.counter - 1, 
-        isLoggedIn: true
-      }
-    )
-  } // NOT PART OF THE APP, JUST FOR PRACTICE FOR ME
-
-  render(){
-
-    // let wordDisplay
-
-    // const jokesComponents = jokesData.map((joke)=>{
-    //   return <Joke key={joke.id} Question={joke.Question} Answer={joke.Answer}/>
-    // })
-
-    // if(this.state.isLoggedIn === true && this.state.counter%2!==0){
-    //   wordDisplay = "IN"
-    // }
-    // else{
-    //   wordDisplay = "NOT IN"
-    // }
-    
-
-    // ACTUAL MAIN PAGE IMPLEMENTATION
+function App() {
+    const loggedIn = useContext(LoginContext)
     return(
       <div>
-          <h1>Main Page!!</h1>
-          <div>
-            <ul>
-              <li><Link to="/CheckIn">CheckIn --></Link></li>
-
-              <li><Link to="/PullComics">Pull Comics --></Link></li>
-
-              <li><Link to="/ProfileSettings">Profile_Settings --></Link></li>
-
-              <li><Link to="/Inventory">Inventory --></Link></li>
-              
-              <li><Link to="/FanManagement">Fan_Management --></Link></li>
-              
-              <li><Link to="/Admin">Admin --></Link></li>
-            </ul>
+          <Header loggedIn={loggedIn} /* want this to display user's name */ user={"User"} />
+          <div className="main-menu">
+            <nav>
+              <ul>
+                <li>{(loggedIn === true) ? (<Link className="menu-items" to='/CheckIn' >Check-In</Link>) : (<Link className="menu-items" to="/login">Check-In</Link>) } </li>
+                <li className="pullmenu"><Link className="menu-items" to="/PullComics">Pull Comics</Link>
+                    <div class="pull-dropdown-content">
+                    <a href="PullByWeek">By Week</a>
+                    <a href="PullByUser">By User</a>
+                    </div>
+                </li>
+                <li><Link className="menu-items" to="/Inventory">Inventory</Link></li>
+                <li><Link className="menu-items" to="/FanManagement">Fan Profiles</Link></li>
+                <li><Link className="menu-items" to="/Admin">Admin</Link></li>
+              </ul>
+            </nav>
           </div>
+          <div className="main-content">
+              <h1>Comics go here</h1> 
+          </div> 
       </div>
     )
   }
-
-}
 export default App;

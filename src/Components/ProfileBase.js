@@ -29,3 +29,29 @@ const ProfileBase=[
 ]
 
 export default ProfileBase
+
+
+
+
+/*
+
+Customer profile: {
+firstName: String,
+lastName: String,
+email: String,
+storeId: Int,
+pulledComics: [Comic],
+pulledComicsSetAside: [Comic],
+fulfilledComics: [Comic],
+neverFulfilledComics: [Comic]
+}
+
+PulledComicsSetAside - Fan Management (pulled tab)
+
+PulledComicsSetAside - Fan Management (pulled tab)
+
+neverFulfilledComics - used to calculate pull/fulfill ratio on fan management page.
+
+Equation is all other arrays except for never fulfilled divided by all four arrays.
+
+*/
