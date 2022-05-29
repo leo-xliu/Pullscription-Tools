@@ -59,7 +59,7 @@ export default function FanManagement() {
 
     const [query, setQuery] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
-    const [fanPerPage, setFanPerPage] = useState(10)
+    const [fanPerPage, setFanPerPage] = useState(16)
 
     var fanProfile = CustomerProfileBase.filter(data => {
       let fullName = data.firstName + " "+ data.lastName
@@ -109,6 +109,7 @@ export default function FanManagement() {
                 currentPage={currentPage}
                 totalSize={fanProfile.length}
                 changeCurrentPage={setCurrentPage}
+                sizePerPage={fanPerPage}
                 theme="bootstrap"
           />
       </div>

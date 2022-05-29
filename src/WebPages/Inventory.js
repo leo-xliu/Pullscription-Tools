@@ -37,7 +37,7 @@ export default function Inventory() {
     
     const [query, setQuery] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
-    const [comicsPerPage, setComicsPerPage] = useState(10)
+    const [comicsPerPage, setComicsPerPage] = useState(16)
 
     // const root = ReactDOM.createRoot(document.getElementById('root'));
     // root.render(
@@ -105,6 +105,7 @@ export default function Inventory() {
                 currentPage={currentPage}
                 totalSize={inventoryComics.length}
                 changeCurrentPage={setCurrentPage}
+                sizePerPage={comicsPerPage}
                 theme="bootstrap"
           />
           </div>
@@ -119,6 +120,7 @@ export default function Inventory() {
                 currentPage={currentPage}
                 totalSize={inventoryComics.length}
                 changeCurrentPage={setCurrentPage}
+                sizePerPage={comicsPerPage}
                 theme="bootstrap"
           />
           </div>
