@@ -62,7 +62,7 @@ nav .menu-items:hover::before {
     width: 100%;
 }
 
-a[href="PullComics"] {
+/* a[href="PullComics"] {
     padding-bottom: 25px;
 }
 
@@ -95,7 +95,7 @@ a[href="PullComics"] {
       background-color: #f1f1f1;
       border-radius: 6px;
       color: black;
-    }
+    } */
 
 .main-content{
     display: flex;

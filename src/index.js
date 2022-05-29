@@ -12,7 +12,7 @@ import LoginPage from './WebPages/LoginPage';
 
 //import CheckInPages
 import CheckIn from './WebPages/CheckIn';
-import PullByWeek from './WebPages/PullPages/PullByWeek';
+// import PullByWeek from './WebPages/PullPages/PullByWeek';
 import PullByUser from './WebPages/PullPages/PullByUser';
 import ProfileSettings from './WebPages/ProfileSettings';
 
@@ -47,7 +47,7 @@ function Index() {
             <Route path="/CheckIn" element={<CheckIn />} />
             <Route path="/login" element={<LoginPage logged={handleLogin}/>} />
             <Route path="/PullComics" element={<PullComics />} />
-                <Route path="/PullComics/PullByWeek" element={<PullByWeek />} />
+                {/* <Route path="/PullComics/PullByWeek" element={<PullByWeek />} /> */}
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
                     <Route path="/PullComics/PullByUser/PulledComics" element={<PulledComics />} />
 
