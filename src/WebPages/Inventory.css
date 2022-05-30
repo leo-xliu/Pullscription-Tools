@@ -1,9 +1,90 @@
-.box {
-    text-align: left;
-    border: black ridge 1px;
-    border-radius: 10px;
-    margin: 3px;
-    width: 20rem;
-    padding-left: 10px;
+.inventory {
+  background-color: lightgray;
+  margin: 24px;
+  border-radius: 16px;
+  padding: 1rem;
   }
 
+  .pagination {
+    display: flex;
+    justify-content: right;
+    padding: 12px;
+  }
+
+  .searchbar {
+    display: flex;
+    justify-content: right;
+    top: 10px;
+  }
+
+  .searchbar input {
+    background-color: white;
+    padding: 0.4rem;
+    border-radius: 8px;
+    width: 40%;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+
+  @media(max-width:700px){
+    .searchbar input {
+      width: 240px;
+    }
+  }
+  .comic-panel-single {
+      background-color: white;
+      margin: 8px;
+      padding: 12px;
+      border-radius: 8px;
+  }
+
+  .comic-title {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .comic-title h6{
+    color: gray;
+  }
+
+  .comic-cover {
+    height: 15rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+
+  .comic-cover:hover {
+    box-shadow: 0 0 12px gray;
+    position: relative;
+    top: -2px;
+  }
+  .comic-panels {
+    display: flex; 
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+
+  @media(max-width: 1000px) {
+    .comic-panels {
+      grid-template-columns: auto auto auto;
+    }
+  }
+
+  @media(max-width: 750px) {
+    .comic-panels {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  @media(max-width: 550px) {
+    .comic-panels {
+      grid-template-columns: auto;
+    }
+  }

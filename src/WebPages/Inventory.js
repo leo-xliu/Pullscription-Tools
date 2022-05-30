@@ -4,9 +4,11 @@ import Data from '../Components/Data';
 import DataBase from '../Components/DataBase';
 import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
-import {useState} from "react";
+import {useState, useContext} from "react";
 import Pagination from '../Components/PaginationFeature/Pagination'
 import Header from "../Components/Header";
+import { LoginContext } from '../index';
+import './Inventory.css';
 
 
 export default function Inventory() {
@@ -35,7 +37,7 @@ export default function Inventory() {
     
     const [query, setQuery] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
-    const [comicsPerPage, setComicsPerPage] = useState(10)
+    const [comicsPerPage, setComicsPerPage] = useState(16)
 
     // const root = ReactDOM.createRoot(document.getElementById('root'));
     // root.render(
@@ -55,48 +57,74 @@ export default function Inventory() {
         return data;
       }
     }).map((data, index) => (
-      <div className="box" key={index}>
+      <div className="comic-panel-single" key={index}>
         <Link to="/Inventory/ComicProfile"
             state={{
                 MAIN_DESC: data.MAIN_DESC,
                 COVER_ARTIST: data.COVER_ARTIST,
-                DIAMOND_NO: data.DIAMOND_NO,
                 IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
+                PUBLISHER: data.PUBLISHER,
+                STREET_DATE: data.STREET_DATE,
+                ARTIST: data.ARTIST,
+                AUTHOR: data.WRITER
             }}
         >
-            <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+          <img className="comic-cover" src={data.IMAGE_URL_SMALL} alt="Logo" />
         </Link>
-        <h6>{data.PUBLISHER}</h6>
-        <h3>{data.MAIN_DESC}</h3>
+        <div className="comic-title"> 
+          <p>{data.MAIN_DESC}</p>
+          <h6>{data.PUBLISHER}</h6>
+        </div>
+
+
       </div>
     ))
 
     console.log({inventoryComics})
-
+    var newComics = inventoryComics
     const indexOfLastComics = currentPage * comicsPerPage
     const indexOfFirstComics = indexOfLastComics - comicsPerPage
-    const currentComics = inventoryComics.slice(indexOfFirstComics, indexOfLastComics)
+    const currentComics = newComics.slice(indexOfFirstComics, indexOfLastComics)
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
+    const loggedIn = useContext(LoginContext)
+
     return (
-        <div className="box">
-        <Header/>
-            <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
-            {
-              <div>
-                {currentComics}
-              </div>
-            }
-            <Pagination 
+        <div>
+        <Header loggedIn={loggedIn} user={"User"} />
+        <div className="inventory">
+          <div className="searchbar">
+            <input placeholder="Search Comic Title" onChange={event => setQuery(event.target.value)} />
+          </div>
+          <div className="pagination">
+          <Pagination 
                 /*comicsPerPage={comicsPerPage}
                 totalComics={inventoryComics.length}
                 paginate = {paginate}*/
                 currentPage={currentPage}
                 totalSize={inventoryComics.length}
                 changeCurrentPage={setCurrentPage}
+                sizePerPage={comicsPerPage}
                 theme="bootstrap"
-            />
+          />
+          </div>
+          <div className= "comic-panels">
+              {currentComics}
+          </div>
+          <div className="pagination">
+          <Pagination 
+                /*comicsPerPage={comicsPerPage}
+                totalComics={inventoryComics.length}
+                paginate = {paginate}*/
+                currentPage={currentPage}
+                totalSize={inventoryComics.length}
+                changeCurrentPage={setCurrentPage}
+                sizePerPage={comicsPerPage}
+                theme="bootstrap"
+          />
+          </div>
+          </div>
         </div>
         
     )

@@ -1,0 +1,17 @@
+.admin-features {
+    background-color: lightgray;
+    margin: 24px;
+}
+
+.add-user, .remove-user {
+}
+.add-user button {
+    background-color: red;
+}
+
+.add-user form {
+}
+
+.remove-user button {
+    background-color: red;
+}

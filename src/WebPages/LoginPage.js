@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../Images/PSLOGO.png';
 
 
-function LoginPage({logged}) {
+function LoginPage({logged, admin}) {
     let navigate = useNavigate();
     const adminUser = {
         username:"psadmin",
@@ -22,6 +22,7 @@ function LoginPage({logged}) {
         if (info.username === adminUser.username && info.password === adminUser.password){
             setUser({username: info.username});
             logged(true);
+            admin(true);
             setError("");
         }
         else if (employees.get(info.username) === info.password){

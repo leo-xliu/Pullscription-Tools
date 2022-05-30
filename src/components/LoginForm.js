@@ -10,7 +10,7 @@ function LoginForm({Login, error}) {
 
     return (
     <div className="loginform"> 
-        <form onSubmit={submitHandler}>
+        <form className="form-page" onSubmit={submitHandler}>
                     <h1 classname="welcome"> Welcome </h1>   
                     <div className="form-section">
                         <label htmlFor="username">Username: </label>

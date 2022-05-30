@@ -12,7 +12,7 @@ import LoginPage from './WebPages/LoginPage';
 
 //import CheckInPages
 import CheckIn from './WebPages/CheckIn';
-import PullByWeek from './WebPages/PullPages/PullByWeek';
+// import PullByWeek from './WebPages/PullPages/PullByWeek';
 import PullByUser from './WebPages/PullPages/PullByUser';
 import ProfileSettings from './WebPages/ProfileSettings';
 
@@ -23,34 +23,43 @@ import FanProfile from './WebPages/FanManagements/FanProfile';
 
 import ComicProfile from './WebPages/ComicProfile';
 
-import PullComics from './WebPages/PullPages/PullComics';
-import PulledComics from './WebPages/PullPages/PulledComics';
+import PulledComicsProcess from './WebPages/PullPages/PulledComicsProcess';
+import UserPulledComics from './WebPages/PullPages/UserPulledComics';
 
 import Admin from './WebPages/Admin';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export const LoginContext = React.createContext();
+export const AdminContext = React.createContext();
+
 
 function Index() {
   const [loggedIn, setLoggedin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleLogin = info => {
     setLoggedin(info);
 }
 
+  const handleAdmin = info => {
+    setIsAdmin(info);
+  }
+
   return (
   <LoginContext.Provider value={loggedIn}>
+  <AdminContext.Provider value={isAdmin}>
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>} />
             <Route path="/CheckIn" element={<CheckIn />} />
-            <Route path="/login" element={<LoginPage logged={handleLogin}/>} />
-            <Route path="/PullComics" element={<PullComics />} />
-                <Route path="/PullComics/PullByWeek" element={<PullByWeek />} />
+            <Route path="/login" element={<LoginPage logged={handleLogin} admin={handleAdmin}/>} />
+            
+                {/* <Route path="/PullComics/PullByWeek" element={<PullByWeek />} /> */}
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
-                    <Route path="/PullComics/PullByUser/PulledComics" element={<PulledComics />} />
-
+                    <Route path="/PullComics/PullByUser/PulledComics" element={<UserPulledComics />} />
+                        <Route path="/PullComics/PullByUser/PulledComics/PulledComicsProcess" element={<PulledComicsProcess />} />
+                        
             <Route path="/ProfileSettings" element={<ProfileSettings />} />
 
 
@@ -64,6 +73,7 @@ function Index() {
             <Route path="/Admin" element={<Admin />} />
           </Routes>
     </BrowserRouter>
+  </AdminContext.Provider>
   </LoginContext.Provider>
   )
 }
