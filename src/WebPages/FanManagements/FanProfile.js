@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import {useState, useEffect} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import FanComicsMapping from './FanComicsMapping';
+import { LoginContext } from '../../index';
+import Header from '../../Components/Header';
+import './FanProfile.css';
 
 export default function FanProfile() {
 
@@ -189,36 +192,38 @@ export default function FanProfile() {
     */
    //console.log("FullFilledLength: ")
     //console.log(FULLFILLEDCOMICS.length)
+
+    const loggedIn = useContext(LoginContext)
     return(
         
         <div>      
-            
-            {/* <button onClick={sortClick}>Sort</button>
-                {Sorting}
-                {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
-                
-            <h3 style={{display: NAME ? "block" : "none"}}>
-                {NAME}
-            </h3>
+            <Header loggedIn={loggedIn} user={"User"} />
+            <div className="fan-profile-page">
+              {/* <button onClick={sortClick}>Sort</button>
+                  {Sorting}
+                  {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
+                  
+              <h3 style={{display: NAME ? "block" : "none"}}>
+                  {NAME}
+              </h3>
 
-            <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
+              <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
 
-            <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
+              <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
 
-            <button onClick={pulledClick}>Pulled</button>
-            {(Pulled) ? <div>{displayPCI}</div> : <div></div>}
+              <button onClick={pulledClick}>Pulled</button>
+              {(Pulled) ? <div className="comic-panels-2">{displayPCI}</div> : <div></div>}
 
-            {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
-                {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
-            {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
-                {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
+              {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
+                  {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
+              {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
+                  {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
 
-            <button onClick={fullfilledClick}>Fullfilled</button>
-            {(Fullfilled) ? <div>{displayFFCI}</div> : <div></div>}
+              <button onClick={fullfilledClick}>Fullfilled</button>
+              {(Fullfilled) ? <div className="comic-panels-2">{displayFFCI}</div> : <div></div>}
 
-            <li><Link to="/FanManagement">BACK</Link></li>
-
-            <hr/>
+              <Link to="/FanManagement">BACK</Link>
+          </div>
 
         </div>
     )

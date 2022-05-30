@@ -1,8 +1,31 @@
-.box {
-    text-align: left;
-    border: black ridge 1px;
-    border-radius: 10px;
-    margin: 3px;
-    width: 20rem;
-    padding-left: 10px;
+.fanpage {
+  background-color: lightgray;
+  margin: 24px;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.profile-panels {
+  display: flex; 
+  justify-content: center;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+@media(max-width: 1000px) {
+  .profile-panels {
+    grid-template-columns: auto auto auto;
   }
+}
+
+@media(max-width: 750px) {
+  .profile-panels {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media(max-width: 550px) {
+  .profile-panels {
+    grid-template-columns: auto;
+  }
+}
