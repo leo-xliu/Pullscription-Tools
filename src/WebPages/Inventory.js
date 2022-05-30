@@ -57,7 +57,7 @@ export default function Inventory() {
         return data;
       }
     }).map((data, index) => (
-      <div className="comic-panel-single" key={index}>
+      <div className="comic-panel-single" key={index} MAIN_DESC={data.MAIN_DESC}>
         <Link to="/Inventory/ComicProfile"
             state={{
                 MAIN_DESC: data.MAIN_DESC,
@@ -74,13 +74,14 @@ export default function Inventory() {
         <div className="comic-title"> 
           <p>{data.MAIN_DESC}</p>
           <h6>{data.PUBLISHER}</h6>
+          <h4>{data.PAGE_COUNT} {(data.PAGE_COUNT>1)?"Copies":"Copy"}</h4>
         </div>
 
 
       </div>
     ))
 
-    console.log({inventoryComics})
+    console.log(inventoryComics[0].props.MAIN_DESC)
     var newComics = inventoryComics
     const indexOfLastComics = currentPage * comicsPerPage
     const indexOfFirstComics = indexOfLastComics - comicsPerPage
@@ -89,6 +90,18 @@ export default function Inventory() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     const loggedIn = useContext(LoginContext)
+
+    const sortedData = currentComics.sort((a,b)=>{
+        return a.props.MAIN_DESC > b.props.MAIN_DESC ? 1 : -1
+    })
+
+    const sortedData2 = currentComics.sort((a,b)=>{
+      return a.PUBLISHER > b.PUBLISHER ? 1 : -1
+    })
+
+    const sortedData3 = currentComics.sort((a,b)=>{
+      return a.PAGE_COUNT > b.PAGE_COUNT ? 1 : -1
+    })
 
     return (
         <div>
@@ -110,7 +123,9 @@ export default function Inventory() {
           />
           </div>
           <div className= "comic-panels">
-              {currentComics}
+              {/* {console.log("InvetoryComics:"+inventoryComics)}
+              {console.log("sortedData:"+sortedData[0].MAIN_DESC)} */}
+              {sortedData}
           </div>
           <div className="pagination">
           <Pagination 

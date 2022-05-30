@@ -5,7 +5,8 @@ import {useState, useEffect} from "react";
 import Header from '../../Components/Header';
 import DataBase from '../../Components/DataBase';
 import '../Inventory.css'
-import { AddOutlined } from '@mui/icons-material';
+import CustomerProfileBase from '../../Components/CustomerProfileBase';
+
 
 export default function PulledComicsProcess() {
 
@@ -28,7 +29,12 @@ export default function PulledComicsProcess() {
     }
 
     const minusOne = () => {
-        SETNUM(NUM-1)
+        if((NUM-1)<=0){
+            SETNUM(0)
+        }
+        else{
+            SETNUM(NUM-1)
+        }
     }
 
     const addFive = () => {
@@ -36,7 +42,12 @@ export default function PulledComicsProcess() {
     }
 
     const minusFive = () => {
-        SETNUM(NUM-5)
+        if((NUM-5)<=0){
+            SETNUM(0)
+        }
+        else{
+            SETNUM(NUM-5)
+        }
     }
 
     return (
@@ -50,6 +61,7 @@ export default function PulledComicsProcess() {
                 </div>
                 <button onClick={addFive}>+5</button>
                 <button onClick={addOne}>+1</button>
+                <div style={{ color: "green" }}>{NUM}</div>
                 <button onClick={minusOne}>-1</button>
                 <button onClick={minusFive}>-5</button>
             </div>

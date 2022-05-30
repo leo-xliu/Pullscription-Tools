@@ -25,8 +25,8 @@ export default function FanProfile() {
 
     //var diaplayNFFCI = FanComicsMapping(NEVERFULLFILLEDCOMICS)
 
-    console.log("PulledComics Length: ")
-    console.log(PULLEDCOMICS.length)
+    console.log("PulledComicsSetAside Length: ")
+    console.log(PULLEDCOMICSSETASIDE.length)
     console.log("FullFilledComics Length: ")
     console.log(FULLFILLEDCOMICS.length)
 
@@ -203,9 +203,9 @@ export default function FanProfile() {
 
             <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
 
-            <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
+            <h5>Pull / Purchase Ratio: {parseFloat(purchaseRatio).toFixed(2)}%</h5>
 
-            <button onClick={pulledClick}>Pulled</button>
+            <button Name="PButton" onClick={pulledClick}>Pulled</button>
             {(Pulled) ? <div>{displayPCI}</div> : <div></div>}
 
             {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
@@ -213,7 +213,7 @@ export default function FanProfile() {
             {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
                 {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
 
-            <button onClick={fullfilledClick}>Fullfilled</button>
+            <button Name="FFButton" onClick={fullfilledClick}>Fullfilled</button>
             {(Fullfilled) ? <div>{displayFFCI}</div> : <div></div>}
 
             <li><Link to="/FanManagement">BACK</Link></li>
