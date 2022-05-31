@@ -37,6 +37,42 @@ export const AdminContext = React.createContext();
 function Index() {
   const [loggedIn, setLoggedin] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  
+  const employees = new Map();
+  employees.set("psemploy", "employ1");
+
+  const handleAddUser = info => {
+    if (employees.get(info.username) !== undefined){
+      return 1;
+    }
+    else if (info.password.legnth < 6) {
+      return 2;
+    }
+    else {
+      employees.set(info.username, info.password);
+    }
+  }
+
+  const handleRemUser = info => {
+    if (employees.get(info.username) !== undefined) {
+      employees.delete(info.username);
+    }
+    else {
+      setRemError("User does not exist!");
+    }
+  }
+
+  const handleEmploy = info => {
+    if (info.password === employees.get(info.username)) {
+      return 0;
+    }
+    else if (employees.get(info.username) !== undefined){
+      return 1;
+    }
+    else {
+      return 2
+    }
+  }
 
   const handleLogin = info => {
     setLoggedin(info);
@@ -53,7 +89,7 @@ function Index() {
         <Routes>
             <Route path="/" element={<App/>} />
             <Route path="/CheckIn" element={<CheckIn />} />
-            <Route path="/login" element={<LoginPage logged={handleLogin} admin={handleAdmin}/>} />
+            <Route path="/login" element={<LoginPage logged={handleLogin} admin={handleAdmin} employ={handleEmploy}/>} />
             
                 {/* <Route path="/PullComics/PullByWeek" element={<PullByWeek />} /> */}
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
@@ -70,7 +106,7 @@ function Index() {
             <Route path="/FanManagement" element={<FanManagement />} />
                 <Route path="/FanManagement/FanProfile" element={<FanProfile />} />
 
-            <Route path="/Admin" element={<Admin />} />
+            <Route path="/Admin" element={<Admin adduser={handleAddUser} remuser={handleRemUser}/>} />
           </Routes>
     </BrowserRouter>
   </AdminContext.Provider>
