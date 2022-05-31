@@ -77,7 +77,7 @@ function CSV() {
           <thead>
             <tr>
               {tableRows.map((rows, index) => {
-                return <th key={index}>{rows}</th>;
+                return <th key={index}>{rows} </th>;
               })}
             </tr>
           </thead>
@@ -86,7 +86,7 @@ function CSV() {
               return (
                 <tr key={index}>
                   {value.map((val, i) => {
-                    return <td key={i}>{val}</td>;
+                    return <td key={i}>{val}  </td>;
                   })}
                 </tr>
               );
@@ -96,3 +96,4 @@ function CSV() {
       </div>
     );
   }
+

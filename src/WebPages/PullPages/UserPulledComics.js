@@ -21,6 +21,8 @@ export default function UserPulledComics() {
     const THIS_FIRSTNAME = location.state.FIRSTNAME
     const THIS_LASTNAME = location.state.LASTNAME
 
+    //const [pulledComics, setpulledComics] = useState(PULLEDCOMICS)
+
     const [query, setQuery] = useState("")
 
     console.log(PULLEDCOMICS)
@@ -36,7 +38,7 @@ export default function UserPulledComics() {
       //   return (<img src={image.IMAGE_URL_SMALL} rounded />);
       //  });
 
-        var NUMs
+       
        var userPulledComics = renderPULLEDCOMICS.filter(data => {
         if (query === '') {
           return data;
@@ -55,7 +57,6 @@ export default function UserPulledComics() {
                   MAIN_DESC: data.MAIN_DESC,
                   PUBLISHER: data.PUBLISHER,
                   IMAGE_URL_SMALL: data.IMAGE_URL_SMALL,
-                  NUM: NUMs
               }}
           >
             <img className="comic-cover" src={data.IMAGE_URL_SMALL} alt="Logo" />
@@ -63,9 +64,9 @@ export default function UserPulledComics() {
           <div className="comic-title"> 
             <p>{data.MAIN_DESC}</p>
             <h6>{data.PUBLISHER}</h6>
-            <h4>{searchID(PULLEDCOMICS, data.PS_NO)} {(NUMs = searchID(PULLEDCOMICS, data.PS_NO)>1)?"Copies":"Copy"}</h4>
+            <h4>{searchID(PULLEDCOMICS, data.PS_NO)} {searchID(PULLEDCOMICS, data.PS_NO>1)?"Copies":"Copy"}</h4>
             {console.log("UserPulledComics: firstname: lastname: "+THIS_FIRSTNAME+" "+THIS_LASTNAME)}
-            {console.log("UserPulledComics: PULLEDCOMICS: " + searchID(PULLEDCOMICS, data.PS_NO))}
+            {console.log(PULLEDCOMICS)}
           </div>
         </div>
       ))

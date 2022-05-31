@@ -13,6 +13,7 @@ export default function PulledComicsProcess() {
 
     const[NUM, SETNUM] = useState(0)
     const[INITIAL, SETINITIAL] = useState(false)
+    const [pics, setPics] = useState([]);
 
     const location = useLocation()
 
@@ -21,8 +22,10 @@ export default function PulledComicsProcess() {
 
     const PULLEDCOMICS = location.state.PULLEDCOMICS
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
-    //const NUMS = searchID(PULLEDCOMICS, id)
-    const id = location.state.PS_NO
+   // const NUMS = searchID(PULLEDCOMICS, id)
+
+    const id = location.state.CURRENT_COMICS // PS_NO of this comicsbooks
+
     const MAIN_DESC = location.state.MAIN_DESC
     const PUBLISHER = location.state.PUBLISHER
     const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
@@ -65,6 +68,49 @@ export default function PulledComicsProcess() {
         }
     }
 
+    function Filter(props, props2, PS_NO, NUM, ORIGINAL_NUM) {
+
+        const [pics, setPics] = useState([]);
+
+        function removeImage(PS_NO, NUM, ORIGINAL_NUM){
+        // this is the line that you are looking for
+        //setPics((oldState) => oldState.filter((item) => item.PS_NO !== PS_NO));
+
+        if((ORIGINAL_NUM + NUM) == 0){
+
+         const to_remove = pics.filter((item) => item.PS_NO === PS_NO)[0]
+         const index = props.indexOf(to_remove)
+         setPics(props.splice(index, 1))
+         //document.getElementsByName("PButton")[0].click()
+
+        //document.getElementsByName("PButton")[0].click()
+        //myProps.splice(index, 1)
+        
+        setPics(pics.filter((item) => item.PS_NO !== PS_NO))
+        
+        //props = Array.from(pics)
+        console.log("nowState Size: "+pics.length)
+        }
+      };
+    
+        function addImage(id, NUM){
+        // this is the line that you are looking for
+        //setPics((oldState) => oldState.filter((item) => item.PS_NO !== PS_NO));
+       // console.log(props2.length)
+        props2.push(pics.filter((item) => item.PS_NO === PS_NO)[0])
+        //console.log(props2)
+        removeImage(PS_NO)
+       // console.log(props2.length)
+        //console.log(props2)
+      };
+
+      useEffect(() => {
+        //fake fetch data
+        setPics(props);
+      }, []);
+
+    }
+
     return (
         <div>
             <Header/>
@@ -81,8 +127,11 @@ export default function PulledComicsProcess() {
                 <div style={{ color: "green" }}>{NUM}</div>
                 <button onClick={ () => {minusOne(); setTrue()}}>-1</button>
                 <button onClick={ () => {minusFive(); setTrue()}}>-5</button>
-                {console.log("NUM ID: "+searchID(PULLEDCOMICS, id))}
-                <div style={{color: "yellow"}}>Copies Now:{{NUM_ID}+{NUM}})</div>
+                <h4>{searchID(PULLEDCOMICS, id)+NUM} {((searchID(PULLEDCOMICS, id)+NUM)>1)?"Copies":"Copy"}</h4>
+                {console.log("PULLECOMICS")}
+                {console.log(PULLEDCOMICS)}
+                {console.log(searchID(PULLEDCOMICS, id))}
+                {/* <div style={{color: "yellow"}}>Copies Now:{{NUM_ID}+{NUM}})</div> */}
             </div>
             <Link to='/PullComics/PullByUser'>Confirm</Link>
             {/* <li><Link to="/PullComics/PullByWeek">Pull_By_Week</Link></li>
