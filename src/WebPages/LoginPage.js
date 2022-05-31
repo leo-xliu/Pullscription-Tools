@@ -5,15 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../Images/PSLOGO.png';
 
 
-function LoginPage({logged, admin}) {
+function LoginPage({logged, admin, employ}) {
     let navigate = useNavigate();
     const adminUser = {
         username:"psadmin",
         password: "admin1"
     }
-
-    const employees = new Map();
-    employees.set("psemploy", "employ1");
 
     const [user, setUser] = useState({username: ""});
     const [error, setError] = useState("");
@@ -25,12 +22,12 @@ function LoginPage({logged, admin}) {
             admin(true);
             setError("");
         }
-        else if (employees.get(info.username) === info.password){
+        else if (employ(info) === 0){
             setUser({username: info.username});
             logged(true);
             setError("");
         }
-        else if (info.username === adminUser.username || employees.get(info.username) !== undefined){
+        else if (info.username === adminUser.username || employ(info) === 1){
             setError("Password does not match!");
         }
         else {

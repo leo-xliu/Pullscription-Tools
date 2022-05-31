@@ -12,19 +12,19 @@
   grid-template-columns: auto auto auto auto;
 }
 
-@media(max-width: 1000px) {
+@media(max-width: 1350px) {
   .profile-panels {
     grid-template-columns: auto auto auto;
   }
 }
 
-@media(max-width: 750px) {
+@media(max-width: 1025px) {
   .profile-panels {
     grid-template-columns: auto auto;
   }
 }
 
-@media(max-width: 550px) {
+@media(max-width: 750px) {
   .profile-panels {
     grid-template-columns: auto;
   }
@@ -37,15 +37,25 @@
   border-radius: 10%;
 }
 
+.profile-panel-single:hover {
+  position: relative;
+  top: -6px;
+}
+
 .fan-pic {
   border-radius: 50%;
-  border: 4px solid gray;
+  border: 4px solid lightgray;
   display: block;
   margin-left: auto; 
   margin-right: auto;
-  height: 200px;
-  width: 200px; 
+  height: 15rem; 
+  aspect-ratio: 1/1;
   /* may need to take this out ^ */
+}
+
+.fan-pic:hover {
+  opacity: 0.8;
+  border: 4px solid gray;
 }
 
 .fan-name {
@@ -54,4 +64,5 @@
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 0;
+  font-weight: 600;
 }
