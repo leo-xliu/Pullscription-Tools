@@ -23,7 +23,7 @@ export default function PullByUser(props, arg, props2) {
       }
     }).map((data, index) => (
       <div className="box" key={index}>
-        <p>{data.firstName} {data.lastName}</p>
+        
         <Link to="/PullComics/PullByUser/PulledComics"
             state={{
                 FIRSTNAME: data.firstName,
@@ -35,6 +35,7 @@ export default function PullByUser(props, arg, props2) {
             <img src={data.IMAGE_URL_SMALL} alt="Logo" />
             {console.log("PULLBYUSER: firstname: lastname: "+data.firstName+" "+data.lastName)}
         </Link>
+        <p>{data.firstName} {data.lastName}</p>
       </div>
     ))
 

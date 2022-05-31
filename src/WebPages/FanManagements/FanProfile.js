@@ -15,6 +15,7 @@ export default function FanProfile() {
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
     const FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
     const NEVERFULLFILLEDCOMICS = location.state.NEVERFULLFILLEDCOMICS
+    const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
 
     //var dynamicPULLEDCOMICS = PULLEDCOMICS
 
@@ -202,7 +203,9 @@ export default function FanProfile() {
             {/* <button onClick={sortClick}>Sort</button>
                 {Sorting}
                 {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
-                
+            
+            <img src={IMAGE_URL_SMALL}/>
+
             <h3 style={{display: NAME ? "block" : "none"}}>
                 {NAME}
             </h3>

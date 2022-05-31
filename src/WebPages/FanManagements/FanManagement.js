@@ -74,18 +74,20 @@ export default function FanManagement() {
       }
     }).map((data, index) => (
       <div className="box" key={index}>
-        <p>{data.firstName} {data.lastName}</p>
+        
         <Link to="/FanManagement/FanProfile"
             state={{
                 NAME: data.firstName+" "+data.lastName,
                 PULLEDCOMICS: data.pulledComics,
                 PULLEDCOMICSSETASIDE : data.pulledComicsSetAside,
                 FULLFILLEDCOMICS: data.fulfilledComics,
-                NEVERFULLFILLEDCOMICS: data.neverFulfilledComics
+                NEVERFULLFILLEDCOMICS: data.neverFulfilledComics,
+                IMAGE_URL_SMALL: data.IMAGE_URL_SMALL
             }}
         >
             <img src={data.IMAGE_URL_SMALL} alt="Logo" />
         </Link>
+        <p>{data.firstName} {data.lastName}</p>
       </div>
     ))
 
