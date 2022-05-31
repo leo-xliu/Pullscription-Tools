@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-do
 import {useState, useEffect} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import FanComicsMapping from './FanComicsMapping';
+import getUnique from '../../Components/getUnique';
 
 export default function FanProfile() {
 
@@ -17,6 +18,11 @@ export default function FanProfile() {
 
     //var dynamicPULLEDCOMICS = PULLEDCOMICS
 
+    var renderPULLEDCOMICS = getUnique(PULLEDCOMICS, "PS_NO")
+    var renderPULLEDCOMICSSETASIDE = getUnique(PULLEDCOMICSSETASIDE, "PS_NO")
+    var renderFULLFILLEDCOMICS = getUnique(FULLFILLEDCOMICS, "PS_NO")
+    var renderNEVERFULLFILLEDCOMICS = getUnique(NEVERFULLFILLEDCOMICS, "PS_NO")
+
     var displayPCI = FanComicsMapping(PULLEDCOMICSSETASIDE, 0, FULLFILLEDCOMICS)
 
     //var displayPCSAI = FanComicsMapping(PULLEDCOMICSSETASIDE)
@@ -25,10 +31,10 @@ export default function FanProfile() {
 
     //var diaplayNFFCI = FanComicsMapping(NEVERFULLFILLEDCOMICS)
 
-    console.log("PulledComics Length: ")
-    console.log(PULLEDCOMICS.length)
-    console.log("FullFilledComics Length: ")
-    console.log(FULLFILLEDCOMICS.length)
+    console.log("renderPulledComicsSetAside Length: ")
+    console.log(renderPULLEDCOMICSSETASIDE.length)
+    console.log("renderFullFilledComics Length: ")
+    console.log(renderFULLFILLEDCOMICS.length)
 
     // var pulledComicsIMG = PULLEDCOMICS.map(function(image) {
     //     return (<div>
@@ -201,11 +207,11 @@ export default function FanProfile() {
                 {NAME}
             </h3>
 
-            <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
+            <h5>Pulls to Date: {(totalComics - NEVERFULLFILLEDCOMICS.length)}</h5>
 
-            <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
+            <h5>Pull / Purchase Ratio: {parseFloat(purchaseRatio).toFixed(2)}%</h5>
 
-            <button onClick={pulledClick}>Pulled</button>
+            <button Name="PButton" onClick={pulledClick}>Pulled</button>
             {(Pulled) ? <div>{displayPCI}</div> : <div></div>}
 
             {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
@@ -213,7 +219,7 @@ export default function FanProfile() {
             {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
                 {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
 
-            <button onClick={fullfilledClick}>Fullfilled</button>
+            <button Name="FFButton" onClick={fullfilledClick}>Fullfilled</button>
             {(Fullfilled) ? <div>{displayFFCI}</div> : <div></div>}
 
             <li><Link to="/FanManagement">BACK</Link></li>

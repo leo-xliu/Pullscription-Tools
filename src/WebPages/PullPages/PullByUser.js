@@ -5,6 +5,7 @@ import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import  Pagination  from '../../Components/PaginationFeature/Pagination'
 import Header from '../../Components/Header';
 import PulledComicsProcess from './PulledComicsProcess';
+import getUnique from '../../Components/getUnique';
 
 export default function PullByUser(props, arg, props2) {
 
@@ -25,11 +26,14 @@ export default function PullByUser(props, arg, props2) {
         <p>{data.firstName} {data.lastName}</p>
         <Link to="/PullComics/PullByUser/PulledComics"
             state={{
+                FIRSTNAME: data.firstName,
+                LASTNAME: data.lastName,
                 PULLEDCOMICS: data.pulledComics,
                 PULLEDCOMICSSETASIDE: data.pulledComicsSetAside
             }}
         >
             <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+            {console.log("PULLBYUSER: firstname: lastname: "+data.firstName+" "+data.lastName)}
         </Link>
       </div>
     ))
@@ -49,6 +53,7 @@ export default function PullByUser(props, arg, props2) {
         <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
         {
           <div>{customerProfile}</div>
+          
         }
         <Pagination 
                 /*comicsPerPage={comicsPerPage}
