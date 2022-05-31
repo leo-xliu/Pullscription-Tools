@@ -6,7 +6,6 @@ import './PullByUser.css';
 import Header from '../../Components/Header';
 import {LoginContext} from '../../index';
 import  Pagination  from '../../Components/PaginationFeature/Pagination'
-//import Header from '../../Components/Header';
 import PulledComicsProcess from './PulledComicsProcess';
 import getUnique from '../../Components/getUnique';
 
@@ -25,8 +24,7 @@ export default function PullByUser(props, arg, props2) {
         return data;
       }
     }).map((data, index) => (
-      <div className="box" key={index}>
-        
+      <div className="profile-panel-single" key={index}>
         <Link to="/PullComics/PullByUser/PulledComics"
             state={{
                 FIRSTNAME: data.firstName,
@@ -35,10 +33,10 @@ export default function PullByUser(props, arg, props2) {
                 PULLEDCOMICSSETASIDE: data.pulledComicsSetAside
             }}
         >
-            <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+            <img className="fan-pic" src={data.IMAGE_URL_SMALL} alt="Logo" />
             {console.log("PULLBYUSER: firstname: lastname: "+data.firstName+" "+data.lastName)}
         </Link>
-        <p>{data.firstName} {data.lastName}</p>
+        <p className="fan-name">{data.firstName} {data.lastName}</p>
       </div>
     ))
 
@@ -59,10 +57,7 @@ export default function PullByUser(props, arg, props2) {
           <div className="searchbar">
             <input placeholder="Search Fan Name" onChange={event => setQuery(event.target.value)} />
           </div>
-        <div className="profile-panels">
-          {customerProfile}
-        </div>
-        
+          <div className="pagination">
         <Pagination 
                 /*comicsPerPage={comicsPerPage}
                 totalComics={inventoryComics.length}
@@ -72,6 +67,21 @@ export default function PullByUser(props, arg, props2) {
                 changeCurrentPage={setCurrentPage}
                 theme="bootstrap"
           />
+          </div>
+        <div className="profile-panels">
+          {customerProfile}
+        </div>
+        <div className="pagination">
+        <Pagination 
+                /*comicsPerPage={comicsPerPage}
+                totalComics={inventoryComics.length}
+                paginate = {paginate}*/
+                currentPage={currentPage}
+                totalSize={customerProfile.length}
+                changeCurrentPage={setCurrentPage}
+                theme="bootstrap"
+          />
+          </div>
     </div>
     </div>
     )}
