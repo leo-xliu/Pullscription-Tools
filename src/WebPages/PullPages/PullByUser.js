@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {useState} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
+import './PullByUser.css';
+import Header from '../../Components/Header';
+import {LoginContext} from '../../index';
 
 export default function PullByUser() {
 
     const [query, setQuery] = useState("")
 
+    const loggedIn = useContext(LoginContext)
+
     return (
-        <div className="box">
-          <h1>Pull By User!!</h1>
+        <div>
+          <Header loggedIn={loggedIn} user={"User"} />
+          <div className="inventory">
           {/* <li><Link to="/PullComics">Pull Comics</Link></li>
           <li><Link to="/">Main</Link></li> */}
-        <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
+          <div className="searchbar">
+            <input placeholder="Search Fan Name" onChange={event => setQuery(event.target.value)} />
+          </div>
+        <div className="profile-panels">
         {
           //{dataComponents}  
             CustomerProfileBase.filter(data => {
@@ -23,8 +32,7 @@ export default function PullByUser() {
                 return data;
               }
             }).map((data, index) => (
-              <div className="box" key={index}>
-                <p>{data.firstName} {data.lastName}</p>
+              <div className="profile-panel-single" key={index}>
                 {/*<p>{data.WRITER}</p>*/}
                     {/* <BrowserRouter>
                         <Routes>
@@ -36,12 +44,16 @@ export default function PullByUser() {
                         PULLEDCOMICS: data.pulledComics
                     }}
                 >
-                    <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+                    <img className="fan-pic" src={data.IMAGE_URL_SMALL} alt="Logo" />
                 </Link>
+                <p className="fan-name" >{data.firstName} {data.lastName}</p>
               </div>
             ))
         }
+        </div>
+        </div>
     </div>
     )
+    
 }
 

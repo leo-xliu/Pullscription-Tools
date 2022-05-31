@@ -70,7 +70,7 @@ export default function FanManagement() {
         return data;
       }
     }).map((data, index) => (
-      <div key={index}>
+      <div className="profile-panel-single"key={index}>
         <Link to="/FanManagement/FanProfile"
             state={{
                 NAME: data.firstName+" "+data.lastName,
@@ -80,9 +80,9 @@ export default function FanManagement() {
                 NEVERFULLFILLEDCOMICS: data.neverFulfilledComics
             }}
         >
-            <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+            <img className="fan-pic" src={data.IMAGE_URL_SMALL} alt="Logo" />
         </Link>
-        <p>{data.firstName} {data.lastName}</p>
+        <p className="fan-name">{data.firstName} {data.lastName}</p>
       </div>
     ))
 

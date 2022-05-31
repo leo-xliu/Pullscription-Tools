@@ -207,9 +207,9 @@ export default function FanProfile() {
                   {NAME}
               </h3>
 
-              <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
+              <h5>Total Pulls: {PULLEDCOMICSSETASIDE.length}</h5>
 
-              <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
+              <h5>Pull to Purchase Ratio: {purchaseRatio}%</h5>
 
               <button onClick={pulledClick}>Pulled</button>
               {(Pulled) ? <div className="comic-panels-2">{displayPCI}</div> : <div></div>}
@@ -222,7 +222,7 @@ export default function FanProfile() {
               <button onClick={fullfilledClick}>Fullfilled</button>
               {(Fullfilled) ? <div className="comic-panels-2">{displayFFCI}</div> : <div></div>}
 
-              <Link to="/FanManagement">BACK</Link>
+              <Link to="/FanManagement">Return</Link>
           </div>
 
         </div>
