@@ -3,10 +3,12 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import ProfileBase from '../../Components/ProfileBase';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState} from "react";
+import {useState, useContext} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import  Pagination  from '../../Components/PaginationFeature/Pagination'
 import Header from '../../Components/Header';
+import {LoginContext} from '../../index';
+import './FanManagement.css';
 
 /*
 function RenderTable()
@@ -56,7 +58,6 @@ function RenderTable()
 
 export default function FanManagement() {
 
-
     const [query, setQuery] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
     const [fanPerPage, setFanPerPage] = useState(16)
@@ -73,8 +74,7 @@ export default function FanManagement() {
         return data;
       }
     }).map((data, index) => (
-      <div className="box" key={index}>
-        <p>{data.firstName} {data.lastName}</p>
+      <div className="profile-panel-single"key={index}>
         <Link to="/FanManagement/FanProfile"
             state={{
                 NAME: data.firstName+" "+data.lastName,
@@ -84,8 +84,9 @@ export default function FanManagement() {
                 NEVERFULLFILLEDCOMICS: data.neverFulfilledComics
             }}
         >
-            <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+            <img className="fan-pic" src={data.IMAGE_URL_SMALL} alt="Logo" />
         </Link>
+        <p className="fan-name">{data.firstName} {data.lastName}</p>
       </div>
     ))
 
@@ -96,26 +97,42 @@ export default function FanManagement() {
     const indexOfFirstFan = indexOfLastFan - fanPerPage
     const currentFan = newProfile.slice(indexOfFirstFan, indexOfLastFan)
 
+    const loggedIn = useContext(LoginContext)
+
     return (
 
-      <div className='box'>
-      <Header/>
-        <input placeholder="Enter Fan Name" onChange={event => setQuery(event.target.value)} />
-        {
-          <div>
-            {fanProfile}
+      <div>
+      <Header loggedIn={loggedIn} user={"User"} />
+      <div className="fanpage">
+        <div className="searchbar">
+          <input placeholder="Search Fan Name" onChange={event => setQuery(event.target.value)} />
+        </div>
+        <div className="pagination">
+          <Pagination 
+                  /*comicsPerPage={comicsPerPage}
+                  totalComics={inventoryComics.length}
+                  paginate = {paginate}*/
+                  currentPage={currentPage}
+                  totalSize={fanProfile.length}
+                  changeCurrentPage={setCurrentPage}
+                  theme="bootstrap"
+            />
+        </div>
+        <div className="profile-panels">
+          {fanProfile}
+        </div>
+        <div className="pagination">
+          <Pagination 
+                  /*comicsPerPage={comicsPerPage}
+                  totalComics={inventoryComics.length}
+                  paginate = {paginate}*/
+                  currentPage={currentPage}
+                  totalSize={fanProfile.length}
+                  changeCurrentPage={setCurrentPage}
+                  theme="bootstrap"
+            />
           </div>
-        }
-         <Pagination 
-                /*comicsPerPage={comicsPerPage}
-                totalComics={inventoryComics.length}
-                paginate = {paginate}*/
-                currentPage={currentPage}
-                totalSize={fanProfile.length}
-                changeCurrentPage={setCurrentPage}
-                sizePerPage={fanPerPage}
-                theme="bootstrap"
-          />
+          </div>
       </div>
     )
     
