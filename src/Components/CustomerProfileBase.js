@@ -8,10 +8,10 @@ const CustomerProfileBase=[
         "lastName": "Patterson",
         "email": "email1",
         "storeId": "1",
-        "pulledComicsSetAside": [DataBase[0],DataBase[1], DataBase[2]],
-        "pulledComics": [DataBase[3],DataBase[4], DataBase[5]],
-        "fulfilledComics": [DataBase[6],DataBase[7], DataBase[8]],
-        "neverFulfilledComics": [DataBase[9]]
+        "pulledComicsSetAside": [DataBase[0],DataBase[1], DataBase[2],DataBase[1], DataBase[2],DataBase[2]],
+        "pulledComics": [DataBase[3],DataBase[4], DataBase[5],DataBase[4], DataBase[5],DataBase[5]],
+        "fulfilledComics": [DataBase[6],DataBase[7], DataBase[8],DataBase[7], DataBase[8]],
+        "neverFulfilledComics": [DataBase[9],DataBase[9],DataBase[9]]
     },
 
     {
@@ -20,7 +20,7 @@ const CustomerProfileBase=[
         "email": "email2",
         "storeId": "1",
         "pulledComicsSetAside": [DataBase[0],DataBase[1], DataBase[2]],
-        "pulledComics": [DataBase[10],DataBase[11], DataBase[12]],
+        "pulledComics": [DataBase[10],DataBase[11], DataBase[12],DataBase[11], DataBase[12]],
         "fulfilledComics": [DataBase[6],DataBase[7], DataBase[8]],
         "neverFulfilledComics": [DataBase[9]]
     },

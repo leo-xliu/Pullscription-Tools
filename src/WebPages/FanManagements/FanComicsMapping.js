@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import {useState, useEffect} from "react";
+import searchID from '../../Components/searchID';
+import getUnique from '../../Components/getUnique';
 
 export default function FanComicsMapping(props, arg, props2) {
 
@@ -47,11 +49,12 @@ export default function FanComicsMapping(props, arg, props2) {
       }, []);
 
 //<button onClick={() => removeImage(image.PS_NO)}>X</button>
-    var myProps = pics.map(function(image) {
+    var myProps = getUnique(pics,"PS_NO").map(function(image) {
         return (<div>
                     <img  src={image.IMAGE_URL_SMALL} rounded />
                     <h6>{image.PUBLISHER}</h6>
                     <h3>{image.MAIN_DESC}</h3>
+                    <h4>{searchID(props, image.PS_NO)} {(searchID(props, image.PS_NO)>1)?"Copies":"Copy"}</h4>
                     {(arg==0) ? <button onClick={() => removeImage(image.PS_NO)}>X</button> : <div></div>}
                     {(arg==0) ? <button onClick={() => addImage(image.PS_NO)}>O</button> : <div></div>}
                 </div>

@@ -61,6 +61,10 @@ export default function FanManagement() {
     const [currentPage, setCurrentPage] = useState(1)
     const [fanPerPage, setFanPerPage] = useState(16)
 
+    console.log("FanManagment: CustomerProfileBase: "+CustomerProfileBase)
+    var base = CustomerProfileBase
+    console.log("base: "+base)
+
     var fanProfile = CustomerProfileBase.filter(data => {
       let fullName = data.firstName + " "+ data.lastName
       if (query === '') {
