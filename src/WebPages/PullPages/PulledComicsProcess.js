@@ -12,6 +12,7 @@ import searchID from '../../Components/searchID';
 export default function PulledComicsProcess() {
 
     const[NUM, SETNUM] = useState(0)
+    const[INITIAL, SETINITIAL] = useState(false)
 
     const location = useLocation()
 
@@ -20,7 +21,7 @@ export default function PulledComicsProcess() {
 
     const PULLEDCOMICS = location.state.PULLEDCOMICS
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
-
+    //const NUMS = searchID(PULLEDCOMICS, id)
     const id = location.state.PS_NO
     const MAIN_DESC = location.state.MAIN_DESC
     const PUBLISHER = location.state.PUBLISHER
@@ -28,15 +29,17 @@ export default function PulledComicsProcess() {
     const EXPECTED_PULL = location.state.EXPECTED_PULL
     const NUM_COPY = location.state.NUM_COPY
 
+    const NUM_ID = location.state.NUM
+
     const constNum = NUM_COPY
 
     //console.log("Current_Comics:"+CURRENT_COMICS)
 
-    const addOne = () => {
+    function addOne() {
         SETNUM(NUM+1)
     }
 
-    const minusOne = () => {
+    function minusOne() {
         if((NUM-1)<=0){
             SETNUM(0)
         }
@@ -45,11 +48,15 @@ export default function PulledComicsProcess() {
         }
     }
 
-    const addFive = () => {
+    function setTrue() {
+        SETINITIAL(true)
+    }
+
+    function addFive() {
         SETNUM(NUM+5)
     }
 
-    const minusFive = () => {
+    function minusFive() {
         if((NUM-5)<=0){
             SETNUM(0)
         }
@@ -65,14 +72,17 @@ export default function PulledComicsProcess() {
                 <img className="comic-cover" src={IMAGE_URL_SMALL}></img>
                 <div className="comic-title"> 
                     {/* {console.log("searchID: "+searchID(P))} */}
+                    {console.log("NUM: "+NUM_ID)}
                      <p>{MAIN_DESC}</p>
                      <h6>{PUBLISHER}</h6>
                 </div>
-                <button onClick={addFive}>+5</button>
-                <button onClick={addOne}>+1</button>
+                <button onClick={ () => {addFive(); setTrue()}}>+5</button>
+                <button onClick={ () => {addOne(); setTrue() } }>+1</button>
                 <div style={{ color: "green" }}>{NUM}</div>
-                <button onClick={minusOne}>-1</button>
-                <button onClick={minusFive}>-5</button>
+                <button onClick={ () => {minusOne(); setTrue()}}>-1</button>
+                <button onClick={ () => {minusFive(); setTrue()}}>-5</button>
+                {console.log("NUM ID: "+searchID(PULLEDCOMICS, id))}
+                <div style={{color: "yellow"}}>Copies Now:{{NUM_ID}+{NUM}})</div>
             </div>
             <Link to='/PullComics/PullByUser'>Confirm</Link>
             {/* <li><Link to="/PullComics/PullByWeek">Pull_By_Week</Link></li>
