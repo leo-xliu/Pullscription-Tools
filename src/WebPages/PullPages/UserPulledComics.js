@@ -3,12 +3,13 @@ import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-do
 import DataBase from '../../Components/DataBase';
 import Data from '../../Components/Data';
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
-import {useState, useEffect} from "react";
+import {useState, useContext} from "react";
 import Header from '../../Components/Header';
 import Inventory from '../Inventory';
 import '../Inventory.css';
 import getUnique from '../../Components/getUnique';
 import searchID from '../../Components/searchID';
+import { LoginContext} from '../../index';
 
 // this web is similar to FanComicsMapping
 
@@ -65,11 +66,10 @@ export default function UserPulledComics() {
           </div>
         </div>
       ))
-
+    const loggedIn = useContext(LoginContext)
     return(
         <div> 
-            <Header/>      
-            <h1>User Pulled Comics Page!!</h1>  
+            <Header loggedIn={loggedIn} user={"User"} />     
             <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
             {
                 <div>{userPulledComics}</div>
