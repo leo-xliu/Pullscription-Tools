@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {useState} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
-import  Pagination  from '../../Components/PaginationFeature/Pagination'
+import './PullByUser.css';
 import Header from '../../Components/Header';
+import {LoginContext} from '../../index';
+import  Pagination  from '../../Components/PaginationFeature/Pagination'
+//import Header from '../../Components/Header';
 import PulledComicsProcess from './PulledComicsProcess';
 import getUnique from '../../Components/getUnique';
 
@@ -45,17 +48,21 @@ export default function PullByUser(props, arg, props2) {
     const indexOfFirstFan = indexOfLastFan - fanPerPage
     const currentFan = newProfile.slice(indexOfFirstFan, indexOfLastFan)
 
+    const loggedIn = useContext(LoginContext)
+
     return (
-        <div className="box">
-          <Header/>
-          <h1>Pull By User!!</h1>
+        <div>
+          <Header loggedIn={loggedIn} user={"User"} />
+          <div className="inventory">
           {/* <li><Link to="/PullComics">Pull Comics</Link></li>
           <li><Link to="/">Main</Link></li> */}
-        <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
-        {
-          <div>{customerProfile}</div>
-          
-        }
+          <div className="searchbar">
+            <input placeholder="Search Fan Name" onChange={event => setQuery(event.target.value)} />
+          </div>
+        <div className="profile-panels">
+          {customerProfile}
+        </div>
+        
         <Pagination 
                 /*comicsPerPage={comicsPerPage}
                 totalComics={inventoryComics.length}
@@ -66,8 +73,10 @@ export default function PullByUser(props, arg, props2) {
                 theme="bootstrap"
           />
     </div>
-    )
-}
+    </div>
+    )}
+    
+  
 
 
 // CustomerProfileBase.filter(data => {

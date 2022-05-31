@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import {useState, useEffect} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import FanComicsMapping from './FanComicsMapping';
+import { LoginContext } from '../../index';
+import Header from '../../Components/Header';
+import './FanProfile.css';
 import getUnique from '../../Components/getUnique';
 
 export default function FanProfile() {
@@ -196,38 +199,34 @@ export default function FanProfile() {
     */
    //console.log("FullFilledLength: ")
     //console.log(FULLFILLEDCOMICS.length)
+
+    const loggedIn = useContext(LoginContext)
     return(
         
         <div>      
-            
-            {/* <button onClick={sortClick}>Sort</button>
-                {Sorting}
-                {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
-            
-            <img src={IMAGE_URL_SMALL}/>
+            <Header loggedIn={loggedIn} user={"User"} />
+            <div className="fan-profile-page">
+              {/* <button onClick={sortClick}>Sort</button>
+                  {Sorting}
+                  {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
+                  
+              <h3 style={{display: NAME ? "block" : "none"}}>
+                  {NAME}
+              </h3>
+            <h5>Total Pulls: {(totalComics - NEVERFULLFILLEDCOMICS.length)}</h5>
 
-            <h3 style={{display: NAME ? "block" : "none"}}>
-                {NAME}
-            </h3>
-
-            <h5>Pulls to Date: {(totalComics - NEVERFULLFILLEDCOMICS.length)}</h5>
-
-            <h5>Pull / Purchase Ratio: {parseFloat(purchaseRatio).toFixed(2)}%</h5>
+            <h5>Pull to Purchase Ratio: {parseFloat(purchaseRatio).toFixed(2)}%</h5>
 
             <button Name="PButton" onClick={pulledClick}>Pulled</button>
-            {(Pulled) ? <div>{displayPCI}</div> : <div></div>}
-
-            {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
-                {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
-            {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
-                {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
-
+            {(Pulled) ? <div className="comic-panels-2">{displayPCI}</div> : <div></div>}
+              {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
+                  {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
+              {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
+                  {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
             <button Name="FFButton" onClick={fullfilledClick}>Fullfilled</button>
-            {(Fullfilled) ? <div>{displayFFCI}</div> : <div></div>}
-
-            <li><Link to="/FanManagement">BACK</Link></li>
-
-            <hr/>
+            {(Fullfilled) ? <div className="comic-panels-2">{displayFFCI}</div> : <div></div>}
+              <Link to="/FanManagement">Return</Link>
+          </div>
 
         </div>
     )

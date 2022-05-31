@@ -1,0 +1,31 @@
+.fan-profile-page {
+    background-color: lightgray;
+    margin: 24px;
+    padding-top: 2rem;
+    padding-bottom: 2em;
+    border-radius: 16px;
+}
+
+.FCbutton {
+    background-color: gray;
+    margin: 2px;
+    width: 128px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+}
+
+.comic-panel-single img {
+    height: 20rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.comic-panels-2 {
+    display: flex; 
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto;
+  }

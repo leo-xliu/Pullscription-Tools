@@ -50,13 +50,13 @@ export default function FanComicsMapping(props, arg, props2) {
 
 //<button onClick={() => removeImage(image.PS_NO)}>X</button>
     var myProps = getUnique(pics,"PS_NO").map(function(image) {
-        return (<div>
+        return (<div className="comic-panel-single">
                     <img  src={image.IMAGE_URL_SMALL} rounded />
-                    <h6>{image.PUBLISHER}</h6>
                     <h3>{image.MAIN_DESC}</h3>
+                    <h6>{image.PUBLISHER}</h6>
                     <h4>{searchID(props, image.PS_NO)} {(searchID(props, image.PS_NO)>1)?"Copies":"Copy"}</h4>
-                    {(arg==0) ? <button onClick={() => removeImage(image.PS_NO)}>X</button> : <div></div>}
-                    {(arg==0) ? <button onClick={() => addImage(image.PS_NO)}>O</button> : <div></div>}
+                    {(arg==0) ? <button className="FCbutton" onClick={() => removeImage(image.PS_NO)}>Complete</button> : <div></div>}
+                    {(arg==0) ? <button className="FCbutton" onClick={() => addImage(image.PS_NO)}>Cancel</button> : <div></div>}
                 </div>
         );      
        });
