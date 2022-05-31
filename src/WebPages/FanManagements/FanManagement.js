@@ -81,7 +81,8 @@ export default function FanManagement() {
                 PULLEDCOMICS: data.pulledComics,
                 PULLEDCOMICSSETASIDE : data.pulledComicsSetAside,
                 FULLFILLEDCOMICS: data.fulfilledComics,
-                NEVERFULLFILLEDCOMICS: data.neverFulfilledComics
+                NEVERFULLFILLEDCOMICS: data.neverFulfilledComics,
+                IMAGE_URL_SMALL: data.IMAGE_URL_SMALL
             }}
         >
             <img className="fan-pic" src={data.IMAGE_URL_SMALL} alt="Logo" />

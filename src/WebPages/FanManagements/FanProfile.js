@@ -18,6 +18,7 @@ export default function FanProfile() {
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
     const FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
     const NEVERFULLFILLEDCOMICS = location.state.NEVERFULLFILLEDCOMICS
+    const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
 
     //var dynamicPULLEDCOMICS = PULLEDCOMICS
 
