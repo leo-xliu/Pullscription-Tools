@@ -5,10 +5,47 @@ import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import './PullByUser.css';
 import Header from '../../Components/Header';
 import {LoginContext} from '../../index';
+import  Pagination  from '../../Components/PaginationFeature/Pagination'
+import Header from '../../Components/Header';
+import PulledComicsProcess from './PulledComicsProcess';
+import getUnique from '../../Components/getUnique';
 
-export default function PullByUser() {
+export default function PullByUser(props, arg, props2) {
 
     const [query, setQuery] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
+    const [fanPerPage, setFanPerPage] = useState(10)
+
+
+    var customerProfile = CustomerProfileBase.filter(data => {
+      let fullName = data.firstName + " "+ data.lastName
+      if (query === '') {
+        return data;
+      } else if ((fullName).toLowerCase().includes(query.toLowerCase())) {
+        return data;
+      }
+    }).map((data, index) => (
+      <div className="box" key={index}>
+        <p>{data.firstName} {data.lastName}</p>
+        <Link to="/PullComics/PullByUser/PulledComics"
+            state={{
+                FIRSTNAME: data.firstName,
+                LASTNAME: data.lastName,
+                PULLEDCOMICS: data.pulledComics,
+                PULLEDCOMICSSETASIDE: data.pulledComicsSetAside
+            }}
+        >
+            <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+            {console.log("PULLBYUSER: firstname: lastname: "+data.firstName+" "+data.lastName)}
+        </Link>
+      </div>
+    ))
+
+
+    var newProfile = customerProfile
+    const indexOfLastFan = currentPage * fanPerPage
+    const indexOfFirstFan = indexOfLastFan - fanPerPage
+    const currentFan = newProfile.slice(indexOfFirstFan, indexOfLastFan)
 
     const loggedIn = useContext(LoginContext)
 
@@ -22,38 +59,47 @@ export default function PullByUser() {
             <input placeholder="Search Fan Name" onChange={event => setQuery(event.target.value)} />
           </div>
         <div className="profile-panels">
-        {
-          //{dataComponents}  
-            CustomerProfileBase.filter(data => {
-              let fullName = data.firstName + " "+ data.lastName
-              if (query === '') {
-                return data;
-              } else if ((fullName).toLowerCase().includes(query.toLowerCase())) {
-                return data;
-              }
-            }).map((data, index) => (
-              <div className="profile-panel-single" key={index}>
-                {/*<p>{data.WRITER}</p>*/}
-                    {/* <BrowserRouter>
-                        <Routes>
-                            <Route path="/Inventory/ComicProfile" element={<ComicProfile props={data}/>} />
-                        </Routes>
-                    </BrowserRouter> */}
-                <Link to="/PullComics/PullByUser/PulledComics"
-                    state={{
-                        PULLEDCOMICS: data.pulledComics
-                    }}
-                >
-                    <img className="fan-pic" src={data.IMAGE_URL_SMALL} alt="Logo" />
-                </Link>
-                <p className="fan-name" >{data.firstName} {data.lastName}</p>
-              </div>
-            ))
-        }
+          {customerProfile}
         </div>
-        </div>
+        
+        <Pagination 
+                /*comicsPerPage={comicsPerPage}
+                totalComics={inventoryComics.length}
+                paginate = {paginate}*/
+                currentPage={currentPage}
+                totalSize={customerProfile.length}
+                changeCurrentPage={setCurrentPage}
+                theme="bootstrap"
+          />
     </div>
-    )
+    </div>
+    )}
     
-}
+  
 
+
+// CustomerProfileBase.filter(data => {
+//   let fullName = data.firstName + " "+ data.lastName
+//   if (query === '') {
+//     return data;
+//   } else if ((fullName).toLowerCase().includes(query.toLowerCase())) {
+//     return data;
+//   }
+// }).map((data, index) => (
+//   <div className="box" key={index}>
+//     <p>{data.firstName} {data.lastName}</p>
+//     {/*<p>{data.WRITER}</p>*/}
+//         {/* <BrowserRouter>
+//             <Routes>
+//                 <Route path="/Inventory/ComicProfile" element={<ComicProfile props={data}/>} />
+//             </Routes>
+//         </BrowserRouter> */}
+//     <Link to="/PullComics/PullByUser/PulledComics"
+//         state={{
+//             PULLEDCOMICS: data.pulledComics
+//         }}
+//     >
+//         <img src={data.IMAGE_URL_SMALL} alt="Logo" />
+//     </Link>
+//   </div>
+// ))

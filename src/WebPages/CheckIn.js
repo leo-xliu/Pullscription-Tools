@@ -6,12 +6,17 @@ import { LoginContext } from '../index';
 import { useState } from "react";
 import Papa from "papaparse";
 
+import logo1 from '../Images/Diamond_CheckIn.png'
+
 export default function CheckIn() {
+
     const loggedIn = useContext(LoginContext)
+    
     return (
         <div>
             <Header loggedIn={loggedIn} /* want this to display user's name */ user={"User"} />
             <h1>CheckIn Page!!</h1>
+            <img src={logo1} />
             {CSV()}
             <li><Link to="/">Main</Link></li>
         </div>

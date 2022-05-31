@@ -9,7 +9,7 @@ import Pagination from '../Components/PaginationFeature/Pagination'
 import Header from "../Components/Header";
 import { LoginContext } from '../index';
 import './Inventory.css';
-
+//import { Select } from 'react-select'
 
 export default function Inventory() {
 
@@ -37,7 +37,8 @@ export default function Inventory() {
     
     const [query, setQuery] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
-    const [comicsPerPage, setComicsPerPage] = useState(10)
+    const [comicsPerPage, setComicsPerPage] = useState(16)
+
 
     // const root = ReactDOM.createRoot(document.getElementById('root'));
     // root.render(
@@ -57,7 +58,7 @@ export default function Inventory() {
         return data;
       }
     }).map((data, index) => (
-      <div className="comic-panel-single" key={index}>
+      <div className="comic-panel-single" key={index} MAIN_DESC={data.MAIN_DESC} PUBLISHER={data.PUBLISHER} PAGE_COUNT={data.PAGE_COUNT}>
         <Link to="/Inventory/ComicProfile"
             state={{
                 MAIN_DESC: data.MAIN_DESC,
@@ -74,19 +75,52 @@ export default function Inventory() {
         <div className="comic-title"> 
           <p>{data.MAIN_DESC}</p>
           <h6>{data.PUBLISHER}</h6>
+          <h4>{data.PAGE_COUNT} {(data.PAGE_COUNT>1)?"Copies":"Copy"}</h4>
         </div>
 
 
       </div>
     ))
 
-    console.log({inventoryComics})
-    var newComics = inventoryComics
+    //console.log(inventoryComics[0].props.MAIN_DESC)
+
+    
+    // const MyComponent = () => (
+    //   <Select options={options} />
+    // )
+
+    const options = [
+      {index: 0, label: "MAIN_DESC"},
+      {index: 1, label: "PUBLISHER"},
+      {index: 2, label: "#ofCopies"}
+    ]
+
+    const newComics = inventoryComics
+
+    // const sortedDESC = newComics.sort((a,b)=>{
+    //   return a.props.MAIN_DESC > b.props.MAIN_DESC ? 1 : -1
+    // })
+
+    // const sortedPUBLISHER = newComics.sort((a,b)=>{
+    //   return a.props.PUBLISHER > b.props.PUBLISHER ? 1 : -1
+    // })
+
+    // const sortedCOPIES = newComics.sort((a,b)=>{
+    //   return a.props.PAGE_COUNT > b.props.PAGE_COUNT ? 1 : -1
+    // })
+
+    //const sortedSelection = [sortedDESC, sortedPUBLISHER, sortedCOPIES]
+
+    var id = 2;
+    //options[id].index
+    const book = ["MAIN_DESC", "PUBLISHER", "PAGE_COUNT"]
     const indexOfLastComics = currentPage * comicsPerPage
     const indexOfFirstComics = indexOfLastComics - comicsPerPage
     const currentComics = newComics.slice(indexOfFirstComics, indexOfLastComics)
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    //console.log("sortedSelection: "+sortedSelection[0])
+
+    //const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     const loggedIn = useContext(LoginContext)
 
@@ -105,10 +139,13 @@ export default function Inventory() {
                 currentPage={currentPage}
                 totalSize={inventoryComics.length}
                 changeCurrentPage={setCurrentPage}
+                sizePerPage={comicsPerPage}
                 theme="bootstrap"
           />
           </div>
           <div className= "comic-panels">
+              {/* {console.log("InvetoryComics:"+inventoryComics)}
+              {console.log("sortedData:"+sortedData[0].MAIN_DESC)} */}
               {currentComics}
           </div>
           <div className="pagination">
@@ -119,6 +156,7 @@ export default function Inventory() {
                 currentPage={currentPage}
                 totalSize={inventoryComics.length}
                 changeCurrentPage={setCurrentPage}
+                sizePerPage={comicsPerPage}
                 theme="bootstrap"
           />
           </div>
