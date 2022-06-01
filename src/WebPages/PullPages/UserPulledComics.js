@@ -5,7 +5,6 @@ import Data from '../../Components/Data';
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import {useState, useContext} from "react";
 import Header from '../../Components/Header';
-import Inventory from '../Inventory';
 import '../Inventory.css';
 import getUnique from '../../Components/getUnique';
 import searchID from '../../Components/searchID';
@@ -43,7 +42,7 @@ export default function UserPulledComics() {
           return data;
         }
       }).map((data, index) => (
-        <div key={index}>
+        <div className="comic-panel-single" key={index}>
           <Link to="/PullComics/PullByUser/PulledComics/PulledComicsProcess"
               state={{
                   FIRSTNAME: THIS_FIRSTNAME,
@@ -59,7 +58,7 @@ export default function UserPulledComics() {
             <img className="comic-cover" src={data.IMAGE_URL_SMALL} alt="Logo" />
           </Link>
           <div className="comic-title"> 
-            <p>{data.MAIN_DESC}</p>
+            <p >{data.MAIN_DESC}</p>
             <h6>{data.PUBLISHER}</h6>
             <h4>{searchID(PULLEDCOMICS, data.PS_NO)} {(searchID(PULLEDCOMICS, data.PS_NO)>1)?"Copies":"Copy"}</h4>
             {console.log("UserPulledComics: firstname: lastname: "+THIS_FIRSTNAME+" "+THIS_LASTNAME)}
@@ -70,12 +69,19 @@ export default function UserPulledComics() {
     return(
         <div> 
             <Header loggedIn={loggedIn} user={"User"} />     
-            <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
-            {
-                <div>{userPulledComics}</div>
-            }
-            <li><Link to="/PullComics/PullByUser">BACK</Link></li>
-            <hr/>
+            <div className="inventory">
+              <div className="searchbar">
+                <input placeholder="Enter Comic Title" onChange={event => setQuery(event.target.value)} />
+              </div>
+              <div className="extra-padding">
+              </div>
+              <div className="comic-panels">
+                  {userPulledComics}
+              </div>
+              <div className="return-button">
+                <Link className="return-button-link" to="/PullComics/PullByUser">Return</Link>
+              </div>
             </div>
+          </div>
     )
 }
