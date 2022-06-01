@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-Installs all necessary packages to run the app.\
+Installs all necessary packages to run the app.
 
 
 ### `npm start`
