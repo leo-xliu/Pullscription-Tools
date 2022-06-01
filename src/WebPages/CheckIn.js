@@ -11,14 +11,18 @@ import logo1 from '../Images/Diamond_CheckIn.png'
 export default function CheckIn() {
 
     const loggedIn = useContext(LoginContext)
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
     
     return (
         <div>
             <Header loggedIn={loggedIn} /* want this to display user's name */ user={"User"} />
             <h1>CheckIn Page!!</h1>
-            <img src={logo1} />
+            <button onClick={refreshPage}>Click to reload!</button>
             {CSV()}
-            <li><Link to="/">Main</Link></li>
+            <li><Link to="/">Back</Link></li>
         </div>
     )
 }
@@ -77,7 +81,8 @@ function CSV() {
           <thead>
             <tr>
               {tableRows.map((rows, index) => {
-                return <th key={index}>{rows} </th>;
+                return <div><th key={index}>{rows}</th>
+                        </div>;
               })}
             </tr>
           </thead>
@@ -86,7 +91,10 @@ function CSV() {
               return (
                 <tr key={index}>
                   {value.map((val, i) => {
-                    return <td key={i}>{val}  </td>;
+                    return <div>
+                                <td key={i}>{val}</td>
+                                {'       '}
+                            </div>;
                   })}
                 </tr>
               );

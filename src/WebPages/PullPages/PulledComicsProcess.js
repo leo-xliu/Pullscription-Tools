@@ -72,11 +72,9 @@ export default function PulledComicsProcess() {
 
         const [pics, setPics] = useState([]);
 
-        function removeImage(PS_NO, NUM, ORIGINAL_NUM){
+        function removeImage(){
         // this is the line that you are looking for
         //setPics((oldState) => oldState.filter((item) => item.PS_NO !== PS_NO));
-
-        if((ORIGINAL_NUM + NUM) == 0){
 
          const to_remove = pics.filter((item) => item.PS_NO === PS_NO)[0]
          const index = props.indexOf(to_remove)
@@ -90,24 +88,40 @@ export default function PulledComicsProcess() {
         
         //props = Array.from(pics)
         console.log("nowState Size: "+pics.length)
-        }
+        
       };
     
-        function addImage(id, NUM){
+        function addImage(){
         // this is the line that you are looking for
         //setPics((oldState) => oldState.filter((item) => item.PS_NO !== PS_NO));
        // console.log(props2.length)
         props2.push(pics.filter((item) => item.PS_NO === PS_NO)[0])
         //console.log(props2)
-        removeImage(PS_NO)
+        removeImage(PS_NO, NUM, ORIGINAL_NUM)
+        console.log("props: ")
+        console.log(props)
        // console.log(props2.length)
-        //console.log(props2)
+        console.log("props2: ")
+        console.log(props2)
       };
 
       useEffect(() => {
         //fake fetch data
         setPics(props);
       }, []);
+
+      function Caller(){
+          if((NUM+ORIGINAL_NUM) == 0 ){
+              addImage()
+          }
+          else if(NUM<ORIGINAL_NUM){
+              removeImage()
+          }
+      }
+
+      return(
+            Caller()
+      )
 
     }
 
@@ -130,10 +144,14 @@ export default function PulledComicsProcess() {
                 <h4>{searchID(PULLEDCOMICS, id)+NUM} {((searchID(PULLEDCOMICS, id)+NUM)>1)?"Copies":"Copy"}</h4>
                 {console.log("PULLECOMICS")}
                 {console.log(PULLEDCOMICS)}
+                {/* {Filter(PULLEDCOMICS, PULLEDCOMICSSETASIDE, id, NUM, searchID(PULLEDCOMICS,id))} */}
                 {console.log(searchID(PULLEDCOMICS, id))}
                 {/* <div style={{color: "yellow"}}>Copies Now:{{NUM_ID}+{NUM}})</div> */}
             </div>
-            <Link to='/PullComics/PullByUser'>Confirm</Link>
+            <div>
+                <Link to='/PullComics/PullByUser'>Confirm</Link>
+                <button>Download</button>
+            </div>
             {/* <li><Link to="/PullComics/PullByWeek">Pull_By_Week</Link></li>
             <li><Link to="/PullComics/PullByUser">Pull_By_User</Link></li>
             <li><Link to="/">Main</Link></li> */}
