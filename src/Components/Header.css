@@ -55,7 +55,13 @@ header{
     z-index: 1;
   }
 
-  .dropdown-content a {
+  .dropdown-content > a {
+    color: rgb(24, 24, 24);
+    padding: 14px 1rem;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content > Link {
     color: rgb(24, 24, 24);
     padding: 14px 1rem;
     text-decoration: none;
@@ -71,6 +77,12 @@ header{
       border-radius: 6px;
       color: black;
     }
+
+    .dropdown-content Link:hover {
+        background-color: #f1f1f1;
+        border-radius: 6px;
+        color: black;
+      }
 
 
 .header-user:hover {

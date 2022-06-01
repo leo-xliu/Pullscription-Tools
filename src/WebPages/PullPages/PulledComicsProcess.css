@@ -1,0 +1,116 @@
+.user-comics-pull {
+    margin: 1.5rem 6rem;
+    background-color: lightgray;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.user-comics-pull .return-button {
+    margin: 0;
+}
+
+.user-comics-panel {
+    display: flex;
+    justify-content: center;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.user-comics-cover{
+    height: 20rem;
+    border-radius: 8px;
+    border: 8px solid gray;
+}
+
+.user-comics-info {
+    background-color: rgb(192, 192, 192);
+    margin-top: 12px;
+    margin-bottom: 12px;
+    width: 0%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: ease-in 0.4s;
+}
+
+.user-comics-panel:hover .user-comics-info {
+    width: 100%;
+}
+
+
+.user-comics-info p, .user-comics-info h6 {
+    display: none;
+}
+
+.user-comics-info p {
+    margin: 4px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.user-comics-info h6 {
+    margin: 4px;
+    font-size: 1.25rem;
+}
+
+.user-comics-panel:hover p, .user-comics-panel:hover h6 {
+    display: inline-block;
+}
+
+.function-pad {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 12px;
+    margin: 1rem;
+    margin-right: 30%;
+    margin-left: 30%;
+    padding: 1rem;
+}
+
+.total-num {
+    color: rgb(3, 151, 3);
+    background: lightgray;
+    padding: 12px;
+    padding-right: 24px;
+    padding-left: 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.function-pad-button {
+    background-color: #FFCB07;
+    border-radius: 8px;
+    padding: 12px;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+.function-pad-button:hover {
+    box-shadow: 0 0 4px #FFCB07;
+}
+
+.confirm-button-box {
+    display: flex;
+    justify-content: center;
+}
+.confirm-button{
+    text-decoration: none;
+    color: black;
+    background-color: rgb(3, 151, 3);
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.confirm-button:hover{
+    color: black;
+    box-shadow: 0 0 4px rgb(3, 151, 3);
+}

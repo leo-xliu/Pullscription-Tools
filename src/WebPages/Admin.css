@@ -1,17 +1,56 @@
-.admin-features {
+.admin-page {
     background-color: lightgray;
     margin: 24px;
+    border-radius: 12px;
+    padding: 2rem;
 }
 
-.add-user, .remove-user {
-}
 .add-user button {
-    background-color: red;
+    background-color: gray;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 16px;
+    font-size: 1.5rem;
+    width: 50%;
+    transition: ease-in 0.2s;
 }
 
-.add-user form {
+.add-user button:hover {
+    width: 55%
+}
+.add-user-form {
+    display: flex;
+    justify-content: center;
+}
+
+.add-user-form .form-page{
+    width: 40%;
+}
+
+.add-user-form .form-section{
+    width: 100%;
 }
 
 .remove-user button {
-    background-color: red;
+    background-color: gray;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 16px;
+    margin-top: 16px;
+    font-size: 1.5rem;
+    width: 50%;
+    transition: ease-in 0.2s;
+}
+
+.remove-user button:hover {
+    width: 55%;
+}
+
+
+.adminbuttons {
+    display: flex;
+    justify-content: center;
+}
+.add-user-form .form-page{
+    margin-top: 8px;
 }

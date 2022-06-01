@@ -115,6 +115,7 @@ nav .menu-items:hover::before {
 .car-title{
     margin-right: 1rem;
 }
+
 .car-title > h2{
     color: white;
     font-size: 2rem;
@@ -233,7 +234,7 @@ nav .menu-items:hover::before {
     opacity: 0.5;
   }
   
-  
+
   .car-group:nth-child(1):target ~ .navigation-indicators > *:nth-child(1) {
     opacity: 1;
   }

@@ -75,10 +75,8 @@ export default function Inventory() {
         <div className="comic-title"> 
           <p>{data.MAIN_DESC}</p>
           <h6>{data.PUBLISHER}</h6>
-          <h4>{data.PAGE_COUNT} {(data.PAGE_COUNT>1)?"Copies":"Copy"}</h4>
+          <h5>{data.PAGE_COUNT} {(data.PAGE_COUNT>1)?"Copies":"Copy"}</h5>
         </div>
-
-
       </div>
     ))
 
