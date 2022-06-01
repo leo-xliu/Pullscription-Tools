@@ -12,6 +12,8 @@ import './PulledComicsProcess.css';
 export default function PulledComicsProcess() {
 
     const[NUM, SETNUM] = useState(0)
+    const[INITIAL, SETINITIAL] = useState(false)
+    const [pics, setPics] = useState([]);
 
     const location = useLocation()
 
@@ -20,23 +22,27 @@ export default function PulledComicsProcess() {
 
     const PULLEDCOMICS = location.state.PULLEDCOMICS
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
+   // const NUMS = searchID(PULLEDCOMICS, id)
 
-    const id = location.state.PS_NO
+    const id = location.state.CURRENT_COMICS // PS_NO of this comicsbooks
+
     const MAIN_DESC = location.state.MAIN_DESC
     const PUBLISHER = location.state.PUBLISHER
     const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
     const EXPECTED_PULL = location.state.EXPECTED_PULL
     const NUM_COPY = location.state.NUM_COPY
 
+    const NUM_ID = location.state.NUM
+
     const constNum = NUM_COPY
 
     //console.log("Current_Comics:"+CURRENT_COMICS)
 
-    const addOne = () => {
+    function addOne() {
         SETNUM(NUM+1)
     }
 
-    const minusOne = () => {
+    function minusOne() {
         if((NUM-1)<=0){
             SETNUM(0)
         }
@@ -45,11 +51,15 @@ export default function PulledComicsProcess() {
         }
     }
 
-    const addFive = () => {
+    function setTrue() {
+        SETINITIAL(true)
+    }
+
+    function addFive() {
         SETNUM(NUM+5)
     }
 
-    const minusFive = () => {
+    function minusFive() {
         if((NUM-5)<=0){
             SETNUM(0)
         }
@@ -78,7 +88,8 @@ export default function PulledComicsProcess() {
                     <button className="function-pad-button" onClick={minusFive}>-5</button>
                 </div>
             <div className="confirm-button-box">
-                 <Link className="confirm-button" to='/PullComics/PullByUser'>CONFIRM</Link>
+                 <Link className="confirm-button" to='/PullComics/PullByUser' 
+                 onClick={Filter(PULLEDCOMICS, PULLEDCOMICSSETASIDE, id, NUM, searchID(PULLEDCOMICS, id))}>CONFIRM</Link>
             </div>
             {/* <li><Link to="/PullComics/PullByWeek">Pull_By_Week</Link></li>
             <li><Link to="/PullComics/PullByUser">Pull_By_User</Link></li>
@@ -90,4 +101,42 @@ export default function PulledComicsProcess() {
             </div>
         </div>
     )
+}
+
+
+function Filter(props, props2, PS_NO, NUM, ORIGINAL_NUM) {
+
+    const [pics, setPics] = useState([]);
+
+    function RemoveADDImage(){
+
+    let iter = ORIGINAL_NUM-NUM;
+
+    if(iter < 0){
+        iter = ORIGINAL_NUM
+    }
+
+    for(let i=0; i<iter; i++){
+        const to_remove = pics.filter((item) => item.PS_NO === PS_NO)[0]
+        const index = props.indexOf(to_remove)
+        setPics(props.splice(index, 1))
+    
+        setPics(pics.filter((item) => item.PS_NO !== PS_NO))
+
+        props2.push(pics.filter((item) => item.PS_NO === PS_NO)[0])
+
+        console.log("nowState Size: "+pics.length)
+    }
+    
+  };
+  
+  useEffect(() => {
+    //fake fetch data
+    setPics(props);
+  }, []);
+
+  return(
+        RemoveADDImage()
+  )
+
 }

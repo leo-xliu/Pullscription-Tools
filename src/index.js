@@ -58,7 +58,7 @@ function Index() {
       employees.delete(info.username);
     }
     else {
-      setRemError("User does not exist!");
+      //setRemError("User does not exist!");
     }
   }
 
