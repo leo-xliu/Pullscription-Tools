@@ -2,6 +2,7 @@ import React, { Component, useContext } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { LoginContext } from '../index';
 import Header from '../Components/Header';
+import './ComicProfile.css';
 
 export default function ComicProfile() {
 
@@ -25,32 +26,36 @@ export default function ComicProfile() {
             
         <div>   
             <Header loggedIn={loggedIn} user={"User"} /> 
-            <img src={IMAGE_URL_SMALL} alt="Logos" /> 
-
-            <h6 style={{display: PUBLISHER ? "block" : "none"}}>
-                {PUBLISHER}
-            </h6>  
-            <h3 style={{display: MAIN_DESC ? "block" : "none"}}>
-                {MAIN_DESC}
-            </h3>
-
-            <h5 style={{display: STREET_DATE ? "block" : "none"}}>
-                Release Date: {STREET_DATE}
-            </h5>
-            <h5 style={{display: COVER_ARTIST ? "block" : "none"}}>
-                Cover Artist: {COVER_ARTIST}
-            </h5>
-            <h5 style={{display: ARTIST ? "block" : "none"}}>
-                Artist: {ARTIST}
-            </h5>
-            <h5 style={{display: AUTHOR ? "block" : "none"}}>
-                Author: {AUTHOR}
-            </h5>
-            <h5 style={{display: AUTHOR ? "block" : "none"}}>
-                Author: {AUTHOR}
-            </h5>
-            
-            <li><Link to="/Inventory">BACK</Link></li>
+            <div className="comicprofile-page">
+                <div className="comicprofile-cover">
+                    <img src={IMAGE_URL_SMALL} alt="Logos" /> 
+                </div>
+                <div className="comicprofile-info">
+                    <div className="info-main">
+                        <h2 style={{display: MAIN_DESC ? "block" : "none"}}>
+                            {MAIN_DESC}
+                        </h2>
+                        <h6 style={{display: PUBLISHER ? "block" : "none"}}>
+                            {PUBLISHER}
+                        </h6> 
+                    </div>
+                    <div className="info-sub">
+                        <h5 style={{display: STREET_DATE ? "block" : "none"}}>
+                            <b>Release Date:</b> {STREET_DATE}
+                        </h5>
+                        <h5 style={{display: COVER_ARTIST ? "block" : "none"}}>
+                            <b>Cover Artist:</b> {COVER_ARTIST}
+                        </h5>
+                        <h5 style={{display: ARTIST ? "block" : "none"}}>
+                            <b>Artist:</b> {ARTIST}
+                        </h5>
+                        <h5 style={{display: AUTHOR ? "block" : "none"}}>
+                            <b>Author:</b> {AUTHOR}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <Link to="/Inventory">BACK</Link>
         
         </div>
     )

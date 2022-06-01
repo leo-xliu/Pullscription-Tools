@@ -1,0 +1,147 @@
+.fan-profile-page {
+    background-color: lightgray;
+    margin: 24px;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    border-radius: 16px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.FCbutton1 {
+    background-color: rgb(0, 168, 0);
+    margin: 8px;
+    width: 128px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+}
+
+.FCbutton2 {
+    background-color: rgb(242, 1, 1);
+    margin: 8px;
+    width: 128px;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+}
+
+.FCbutton1:hover {
+    box-shadow: 0 0 6px green;
+    font-weight: 600;
+}
+
+.FCbutton2:hover {
+    box-shadow: 0 0 6px red;
+    font-weight: 600;
+}
+
+#fancomics {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.comic-panel-single img {
+    height: 20rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.comic-panel-single img:hover {
+    box-shadow: 0 0 8px black;
+}
+
+.comic-panel-info {
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.comic-panels-2 {
+    display: flex; 
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+    margin: 0.5rem;
+
+  }
+
+.fan-profile-panel {
+    display: flex;
+    justify-content: center;
+    margin-left: 1.5rem;
+}
+
+.fan-profile-pic {
+    border-radius: 50%;
+    height: 15rem;
+    width: 15rem;
+}
+
+.fan-profile-pic:hover {
+    border: 4px solid rgb(100, 100, 100);
+}
+
+.fan-profile-pic-container {
+    background-color:rgb(165, 165, 165);
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+}
+
+.fan-profile-info {
+    background-color: rgb(165, 165, 165);
+    border-bottom-right-radius: 1%;
+    border-top-right-radius: 12%;
+    margin-right: 1.5rem;
+    padding: 1rem;
+}
+
+.fan-profile-info h38{
+    font-weight: 800;
+}
+
+.PFbuttons {
+    display: flex;
+    justify-content: center;
+}
+
+@media(max-width: 1025px) {
+    .PFbuttons {
+        display: inline-block;
+    }
+}
+
+
+.Pulledbutton {
+    background-color: gray;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 16px;
+    margin-left: 14px;
+    width: 98%;
+    font-size: 1.25rem;
+}
+
+.Fullfilledbutton {
+    background-color: gray;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 16px;
+    width: 98%;
+    margin-left: 14px;
+    font-size: 1.25rem;
+}
+
+.Pulledbutton:hover, .Fullfilledbutton:hover{
+    box-shadow: 0 0 6px gray;
+}
+
+.Pulled-section {
+    width: 100%;
+}
+
+.Fullfilled-section {
+    width: 100%;
+}

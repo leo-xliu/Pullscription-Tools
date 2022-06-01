@@ -1,3 +1,6 @@
+.home-page{
+    position: fixed;
+}
 .main-menu {
     width: 65%;
     margin: 0 auto;
@@ -98,13 +101,162 @@ nav .menu-items:hover::before {
     } */
 
 .main-content{
-    display: flex;
-    justify-content: center;
-    margin-top: 14px;
-    border-radius: 16px;
+    margin-top: 24px;
     margin-right: 24px;
     margin-left: 24px;
-    padding: 200px;
-    padding-bottom: 1000px;
-    background-color: gray;
+    border-radius: 12px;
+    padding: 40px 32px 40px 32px;
+    background-image: linear-gradient(rgb(10, 10, 10), rgb(48, 48, 48));
+    display: flex;
+    justify-content: center;
 }
+
+
+.car-title{
+    margin-right: 1rem;
+}
+
+.car-title > h2{
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    writing-mode: vertical-lr;
+
+}
+
+
+/* carousel css */
+.car-element > img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 663/1024;
+    object-fit: cover;
+}
+
+.car-container {
+    position: relative;
+    width: 68%;
+  }
+  
+  .car-scroller,
+  .car-group {
+    display: grid;
+    gap: 0.25rem;
+    grid-auto-flow: column;
+  }
+  
+  .car-scroller {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    grid-auto-columns: 100%;
+    padding: 0 3rem;
+    scroll-padding-inline: 3rem;
+  }
+  
+  .car-group {
+    grid-auto-columns: 1fr;
+  }
+  
+  .car-element {
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .next,
+  .prev {
+    display: none;
+    align-items: center;
+    z-index: 10;
+    position: absolute;
+    width: 3rem;
+    padding: 1rem;
+    background: rgb(0 0 0 / 0);
+    opacity: 0;
+  }
+  
+  .prev {
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .next {
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .car-group:first-child :where(.next, .prev) {
+    display: flex;
+  }
+  
+  .car-scroller:hover :where(.next, .prev) {
+    opacity: 1;
+  }
+  
+  :where(.next, .prev):hover {
+    background: rgb(0 0 0 / 0.5);
+  }
+  
+  :where(.next, .prev) > svg {
+    transition: transform 75ms linear;
+    transform: scale(1);
+  }
+  :where(.next, .prev):hover > svg {
+    transform: scale(1.6);
+  }
+  
+  .car-group:target :where(.next, .prev) {
+    display: flex;
+  }
+  
+  .car-scroller:has(:target:not(:first-child))
+    .car-group:first-of-type
+    .next {
+    display: none;
+  }
+
+  .navigation-indicators {
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    gap: 4px;
+    border-radius: 2px;
+    top: -1rem;
+    right: 3rem;
+  }
+  
+  .navigation-indicators > * {
+    width: 1rem;
+    height: 2px;
+    background: white;
+    opacity: 0.5;
+  }
+  
+
+  .car-group:nth-child(1):target ~ .navigation-indicators > *:nth-child(1) {
+    opacity: 1;
+  }
+  
+  .car-group:nth-child(2):target ~ .navigation-indicators > *:nth-child(2) {
+    opacity: 1;
+  }
+  
+  .car-group:nth-child(3):target ~ .navigation-indicators > *:nth-child(3) {
+    opacity: 1;
+  }
+  .car-group:nth-child(4):target ~ .navigation-indicators > *:nth-child(4) {
+    opacity: 1;
+  }
+  .car-group:nth-child(5):target ~ .navigation-indicators > *:nth-child(5) {
+    opacity: 1;
+  }
+  .car-group:nth-child(6):target ~ .navigation-indicators > *:nth-child(6) {
+    opacity: 1;
+  }
+  
+  
+  .car-scroller:hover .navigation-indicators {
+    opacity: 1;
+  }
