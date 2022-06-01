@@ -29,7 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 #### Home Page
 
-### Login
+#### Login
 
 #### 'Pull Comics' Page
 
@@ -37,6 +37,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 #### 'Fan Profiles' Page
 
-### 'Check-In' Page
+#### 'Check-In' Page
 
-### 'Admin' Page
+#### 'Admin' Page
