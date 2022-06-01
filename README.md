@@ -16,7 +16,7 @@ Once in the project directory, run:
 
 ### `npm install`
 
-This installs all necessary packages to run the app.
+This installs all necessary packages to run the app. 
 
 When ready to access the app:
 
@@ -25,4 +25,18 @@ When ready to access the app:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+## Pullscription-Tools App Features
 
+#### Home Page
+
+### Login
+
+#### 'Pull Comics' Page
+
+#### 'Inventory' Page
+
+#### 'Fan Profiles' Page
+
+### 'Check-In' Page
+
+### 'Admin' Page
