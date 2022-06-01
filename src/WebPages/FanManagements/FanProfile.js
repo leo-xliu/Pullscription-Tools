@@ -119,13 +119,13 @@ export default function FanProfile() {
     
     function pulledClick() {
         setPulled(!Pulled)
-        setFullfilled(false)
+        // setFullfilled(false)
     }
     //const pulledClick = () => setPulled(!Pulled)
 
     function fullfilledClick() {
         setFullfilled(!Fullfilled)
-        setPulled(false)
+        // setPulled(false)
     }
 
     // function removedClick() {
@@ -209,23 +209,35 @@ export default function FanProfile() {
               {/* <button onClick={sortClick}>Sort</button>
                   {Sorting}
                   {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
-                  
-              <h3 style={{display: NAME ? "block" : "none"}}>
-                  {NAME}
-              </h3>
-            <h5>Total Pulls: {(totalComics - NEVERFULLFILLEDCOMICS.length)}</h5>
-
-            <h5>Pull to Purchase Ratio: {parseFloat(purchaseRatio).toFixed(2)}%</h5>
-
-            <button Name="PButton" onClick={pulledClick}>Pulled</button>
-            {(Pulled) ? <div className="comic-panels-2">{displayPCI}</div> : <div></div>}
-              {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
-                  {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
-              {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
-                  {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
-            <button Name="FFButton" onClick={fullfilledClick}>Fullfilled</button>
-            {(Fullfilled) ? <div className="comic-panels-2">{displayFFCI}</div> : <div></div>}
-              <Link to="/FanManagement">Return</Link>
+              <div className="fan-profile-panel">
+                <div className="fan-profile-pic-container"> 
+                  <img className="fan-profile-pic" src={IMAGE_URL_SMALL} alt="Logo" />   
+                </div>
+                <div className="fan-profile-info">
+                  <h3 style={{display: NAME ? "block" : "none"}}>
+                      {NAME}
+                  </h3>
+                  <h5>Total Pulls: <b>{(totalComics - NEVERFULLFILLEDCOMICS.length)}</b></h5>
+                  <h5>Pull to Purchase Ratio: <b>{parseFloat(purchaseRatio).toFixed(2)}%</b></h5>
+                </div>
+              </div>
+              <div className="PFbuttons">
+              <div className="Pulled-section">
+                <button className="Pulledbutton" Name="PButton" onClick={pulledClick}>Pulled</button>
+                {(Pulled) ? <div className="comic-panels-2">{displayPCI}</div> : <div></div>}
+                  {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
+                      {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
+                  {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
+                      {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
+              </div>
+              <div className="Fullfilled-section">
+                <button className="Fullfilledbutton" Name="FFButton" onClick={fullfilledClick}>Fullfilled</button>
+                {(Fullfilled) ? <div className="comic-panels-2">{displayFFCI}</div> : <div></div>}
+                </div>
+                </div>
+            <div className="return-button">
+              <Link className="return-button-link" to="/FanManagement">Return</Link>
+              </div> 
           </div>
 
         </div>
