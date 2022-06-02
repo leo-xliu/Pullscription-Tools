@@ -5,7 +5,8 @@ const connection = mysql.createConnection({
     user: "sql3497167",
     password: "VT5Y31EWZD",
     database: "sql3497167",
-    port: "3306"
+    port: "3306",
+    connectionTimeout: "60000"
 });
 
 connection.connect((err)=>{

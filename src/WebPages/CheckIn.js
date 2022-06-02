@@ -9,6 +9,8 @@ import Papa from "papaparse";
 import logo1 from '../Images/Diamond_CheckIn.png'
 import CsvReader from '../Components/CsvReader';
 
+import DataBase from '../Components/DataBase';
+
 export default function CheckIn() {
 
     const loggedIn = useContext(LoginContext)
@@ -23,12 +25,45 @@ export default function CheckIn() {
             <h1>CheckIn</h1>
             <h5>Import Your CSV File</h5>
             <button onClick={refreshPage}>Click to reload!</button>
-            <CsvReader/>
+            {/* <button onclick='processFile()'>Process</button> */}
+             <CsvReader/>
+            {console.log("hello")}
             <li><Link to="/">Back</Link></li>
         </div>
     )
 }
 
+function processFile(){
+  var file = document.querySelector('#myFile').files[0];
+  var reader = new FileReader();
+  reader.readAsText(file);
+
+  //if you need to read a csv file with a 'ISO-8859-1' encoding
+  /*reader.readAsText(file,'ISO-8859-1');*/
+
+  //When the file finish load
+  reader.onload = function(event) {
+
+    //get the file.
+    var csv = event.target.result;
+
+    //split and get the rows in an array
+    var rows = csv.split('\n');
+
+    //move line by line
+    for (var i = 1; i < rows.length; i++) {
+      //split by separator (,) and get the columns
+      var cols = rows[i].split(',');
+
+      //move column by column
+      for (var j = 0; j < cols.length; j++) {
+        /*the value of the current column.
+        Do whatever you want with the value*/
+        var value = cols[j];
+      }
+    }
+  }
+}
 
 function CSV() {
     // State to store parsed data
@@ -57,7 +92,8 @@ function CSV() {
   
           // Parsed Data Response in array format
           setParsedData(results.data);
-  
+          console.log("results.data")
+          console.log(results.data)
           // Filtered Column Names
           setTableRows(rowsArray[0]);
   
