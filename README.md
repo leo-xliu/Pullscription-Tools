@@ -56,13 +56,13 @@ The login page contains a single form that allows the user to sign in using thei
 There are two types of users: the admin and the employees. 
 The admin account information is stored separately from the employees and will also have the additional admin feature in the home page. There is only one admin account and it can be accessed with the following information:
 
-username: **psadmin**
+username: **psadmin**\
 password: **admin1**
 
 The admin will have the ability to create and remove employee accounts using the 'Admin' feature on the home page. 
 A sample employee account that can be access has the following information:
 
-username: **psemploy**
+username: **psemploy**\
 password: **employ1**
 
 Once logged in, you will be redirected to the home page. 
