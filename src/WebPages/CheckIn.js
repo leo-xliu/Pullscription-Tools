@@ -6,17 +6,29 @@ import { LoginContext } from '../index';
 import { useState } from "react";
 import Papa from "papaparse";
 
+import logo1 from '../Images/Diamond_CheckIn.png'
+import CsvReader from '../Components/CsvReader';
+
 export default function CheckIn() {
+
     const loggedIn = useContext(LoginContext)
+
+    function refreshPage() {
+      window.location.reload(false);
+    }
+    
     return (
         <div>
             <Header loggedIn={loggedIn} /* want this to display user's name */ user={"User"} />
-            <h1>CheckIn Page!!</h1>
-            {CSV()}
-            <li><Link to="/">Main</Link></li>
+            <h1>CheckIn</h1>
+            <h5>Import Your CSV File</h5>
+            <button onClick={refreshPage}>Click to reload!</button>
+            <CsvReader/>
+            <li><Link to="/">Back</Link></li>
         </div>
     )
 }
+
 
 function CSV() {
     // State to store parsed data
@@ -91,3 +103,4 @@ function CSV() {
       </div>
     );
   }
+

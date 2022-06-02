@@ -17,7 +17,7 @@ function Header(props) {
             </div>
             </a>
             {(props.loggedIn === true) ? (<div /* this dropdown should only show if you are logged in */ class="dropdown-content">
-              <a href="ProfileSettings">Settings</a>
+              <Link to="/ProfileSettings">Settings</Link>
               <a href="/">Logout</a> 
               {/*     use buttons here instead
                       const Logout = () => {

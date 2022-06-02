@@ -1,0 +1,50 @@
+.comicprofile-page{
+    background-color: lightgray;
+    margin: 24px;
+    padding-top: 2rem;
+    padding-bottom: 2em;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+.comicprofile-cover {
+    margin: 24px;
+    background-color:rgb(238, 238, 238);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.comicprofile-cover img{
+    height: 24rem;
+    border-radius: 6px;
+}
+
+.comicprofile-info {
+    margin: 24px 24px 24px 12px;
+}
+
+.comicprofile-info h2 {
+    font-weight: 800;
+}
+
+.comicprofile-info .info-main {
+    background-color: rgb(238, 238, 238);
+    padding-top: 8px;
+    padding-bottom: 2px;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-radius: 8px;
+}
+
+.comicprofile-info .info-sub {
+    background-color: rgb(238, 238, 238);
+    padding-top: 8px;
+    padding-bottom: 2px;
+    padding-right: 16px;
+    padding-left: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+}

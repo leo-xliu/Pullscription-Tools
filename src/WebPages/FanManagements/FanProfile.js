@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import {useState, useEffect} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import FanComicsMapping from './FanComicsMapping';
+import { LoginContext } from '../../index';
+import Header from '../../Components/Header';
+import './FanProfile.css';
+import getUnique from '../../Components/getUnique';
 
 export default function FanProfile() {
 
@@ -14,8 +18,14 @@ export default function FanProfile() {
     const PULLEDCOMICSSETASIDE = location.state.PULLEDCOMICSSETASIDE
     const FULLFILLEDCOMICS = location.state.FULLFILLEDCOMICS
     const NEVERFULLFILLEDCOMICS = location.state.NEVERFULLFILLEDCOMICS
+    const IMAGE_URL_SMALL = location.state.IMAGE_URL_SMALL
 
     //var dynamicPULLEDCOMICS = PULLEDCOMICS
+
+    var renderPULLEDCOMICS = getUnique(PULLEDCOMICS, "PS_NO")
+    var renderPULLEDCOMICSSETASIDE = getUnique(PULLEDCOMICSSETASIDE, "PS_NO")
+    var renderFULLFILLEDCOMICS = getUnique(FULLFILLEDCOMICS, "PS_NO")
+    var renderNEVERFULLFILLEDCOMICS = getUnique(NEVERFULLFILLEDCOMICS, "PS_NO")
 
     var displayPCI = FanComicsMapping(PULLEDCOMICSSETASIDE, 0, FULLFILLEDCOMICS)
 
@@ -25,10 +35,10 @@ export default function FanProfile() {
 
     //var diaplayNFFCI = FanComicsMapping(NEVERFULLFILLEDCOMICS)
 
-    console.log("PulledComics Length: ")
-    console.log(PULLEDCOMICS.length)
-    console.log("FullFilledComics Length: ")
-    console.log(FULLFILLEDCOMICS.length)
+    console.log("renderPulledComicsSetAside Length: ")
+    console.log(renderPULLEDCOMICSSETASIDE.length)
+    console.log("renderFullFilledComics Length: ")
+    console.log(renderFULLFILLEDCOMICS.length)
 
     // var pulledComicsIMG = PULLEDCOMICS.map(function(image) {
     //     return (<div>
@@ -109,13 +119,13 @@ export default function FanProfile() {
     
     function pulledClick() {
         setPulled(!Pulled)
-        setFullfilled(false)
+        // setFullfilled(false)
     }
     //const pulledClick = () => setPulled(!Pulled)
 
     function fullfilledClick() {
         setFullfilled(!Fullfilled)
-        setPulled(false)
+        // setPulled(false)
     }
 
     // function removedClick() {
@@ -189,36 +199,46 @@ export default function FanProfile() {
     */
    //console.log("FullFilledLength: ")
     //console.log(FULLFILLEDCOMICS.length)
+
+    const loggedIn = useContext(LoginContext)
     return(
         
         <div>      
-            
-            {/* <button onClick={sortClick}>Sort</button>
-                {Sorting}
-                {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
-                
-            <h3 style={{display: NAME ? "block" : "none"}}>
-                {NAME}
-            </h3>
-
-            <h5>Pulls to Date: {PULLEDCOMICSSETASIDE.length}</h5>
-
-            <h5>Pull / Purchase Ratio: {purchaseRatio}%</h5>
-
-            <button onClick={pulledClick}>Pulled</button>
-            {(Pulled) ? <div>{displayPCI}</div> : <div></div>}
-
-            {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
-                {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
-            {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
-                {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
-
-            <button onClick={fullfilledClick}>Fullfilled</button>
-            {(Fullfilled) ? <div>{displayFFCI}</div> : <div></div>}
-
-            <li><Link to="/FanManagement">BACK</Link></li>
-
-            <hr/>
+            <Header loggedIn={loggedIn} user={"User"} />
+            <div className="fan-profile-page">
+              {/* <button onClick={sortClick}>Sort</button>
+                  {Sorting}
+                  {sortingData.sort((a,b) => (a.MAIN_DESC > b.MAIN_DESC) ? 1 : -1)} */}
+              <div className="fan-profile-panel">
+                <div className="fan-profile-pic-container"> 
+                  <img className="fan-profile-pic" src={IMAGE_URL_SMALL} alt="Logo" />   
+                </div>
+                <div className="fan-profile-info">
+                  <h3 style={{display: NAME ? "block" : "none"}}>
+                      {NAME}
+                  </h3>
+                  <h5>Total Pulls: <b>{(totalComics - NEVERFULLFILLEDCOMICS.length)}</b></h5>
+                  <h5>Pull to Purchase Ratio: <b>{parseFloat(purchaseRatio).toFixed(2)}%</b></h5>
+                </div>
+              </div>
+              <div className="PFbuttons">
+              <div className="Pulled-section">
+                <button className="Pulledbutton" Name="PButton" onClick={pulledClick}>Pulled</button>
+                {(Pulled) ? <div className="comic-panels-2">{displayPCI}</div> : <div></div>}
+                  {/* {(Pulled) ? <div><button onClick={removedClick}>Cancel User Pull</button></div> : <div></div>}
+                      {(Removed)? <div>Removed{removedFunction}</div> : <div></div>}
+                  {(Pulled) ? <div><button onClick={markFullFilledClick}>Mark as Fullfilled</button></div> : <div></div>}
+                      {(markFullFilled)? <div>{markFullFilledFunction}</div> : <div></div>} */}
+              </div>
+              <div className="Fullfilled-section">
+                <button className="Fullfilledbutton" Name="FFButton" onClick={fullfilledClick}>Fullfilled</button>
+                {(Fullfilled) ? <div className="comic-panels-2">{displayFFCI}</div> : <div></div>}
+                </div>
+                </div>
+            <div className="return-button">
+              <Link className="return-button-link" to="/FanManagement">Return</Link>
+              </div> 
+          </div>
 
         </div>
     )
