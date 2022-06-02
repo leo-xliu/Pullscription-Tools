@@ -34,7 +34,7 @@ This will direct you to the server directory which you will then run:
 
 ### `node app.js`
 
-Connects the database in the development mode.\
+Connects the database in the development mode.
 
 Now the app should be fully functional with the database. 
 Note: any changes made to the server directory source code while running the app will not be reflected unless 'node app.js' is restarted. 
@@ -55,11 +55,13 @@ The login page contains a single form that allows the user to sign in using thei
 
 There are two types of users: the admin and the employees. 
 The admin account information is stored separately from the employees and will also have the additional admin feature in the home page. There is only one admin account and it can be accessed with the following information:
+
 username: **psadmin**
 password: **admin1**
 
 The admin will have the ability to create and remove employee accounts using the 'Admin' feature on the home page. 
 A sample employee account that can be access has the following information:
+
 username: **psemploy**
 password: **employ1**
 
