@@ -8,7 +8,7 @@
     padding-right: 1rem;
 }
 
-.FCbutton1 {
+.FCbutton2 {
     background-color: rgb(0, 168, 0);
     margin: 8px;
     width: 128px;
@@ -16,7 +16,7 @@
     border-radius: 8px;
 }
 
-.FCbutton2 {
+.FCbutton1 {
     background-color: rgb(242, 1, 1);
     margin: 8px;
     width: 128px;
@@ -24,12 +24,12 @@
     border-radius: 8px;
 }
 
-.FCbutton1:hover {
+.FCbutton2:hover {
     box-shadow: 0 0 6px green;
     font-weight: 600;
 }
 
-.FCbutton2:hover {
+.FCbutton1:hover {
     box-shadow: 0 0 6px red;
     font-weight: 600;
 }
@@ -43,7 +43,7 @@
 .comic-panel-single img {
     height: 20rem;
     display: block;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
     margin-bottom: 1rem;
     border-radius: 4px;
@@ -56,12 +56,11 @@
 .comic-panel-info {
     text-align: center;
     margin-top: 1rem;
-    margin-left: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .comic-panels-2 {
-    display: flex; 
-    justify-content: center;
     display: grid;
     grid-template-columns: auto;
     margin: 0.5rem;
@@ -118,7 +117,7 @@
     background-color: gray;
     padding: 8px;
     border-radius: 8px;
-    margin-top: 16px;
+    margin-top: 24px;
     margin-left: 14px;
     width: 98%;
     font-size: 1.25rem;
@@ -128,7 +127,7 @@
     background-color: gray;
     padding: 8px;
     border-radius: 8px;
-    margin-top: 16px;
+    margin-top: 24px;
     width: 98%;
     margin-left: 14px;
     font-size: 1.25rem;

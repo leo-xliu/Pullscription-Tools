@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //import Data from '../Components/Data';
 //import DataBase from '../Components/DataBase';
-import ReactDOM from 'react-dom/client';
 import ComicProfile from './ComicProfile';
 import {useState, useContext} from "react";
 import Pagination from '../Components/PaginationFeature/Pagination'
@@ -88,7 +87,7 @@ useEffect(()=>{
     ))
 
     //console.log({inventoryComics})
-    //var newComics = inventoryComics
+
     //console.log(inventoryComics[0].props.MAIN_DESC)
 
     

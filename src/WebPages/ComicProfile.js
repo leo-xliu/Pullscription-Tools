@@ -1,5 +1,5 @@
-import React, { Component, useContext } from 'react';
-import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {  Link, useLocation } from 'react-router-dom';
 import { LoginContext } from '../index';
 import Header from '../Components/Header';
 import './ComicProfile.css';
@@ -27,6 +27,7 @@ export default function ComicProfile() {
         <div>   
             <Header loggedIn={loggedIn} user={"User"} /> 
             <div className="comicprofile-page">
+            <div className="comicprofile-page-inside">
                 <div className="comicprofile-cover">
                     <img src={IMAGE_URL_SMALL} alt="Logos" /> 
                 </div>
@@ -55,8 +56,10 @@ export default function ComicProfile() {
                     </div>
                 </div>
             </div>
-            <Link to="/Inventory">BACK</Link>
-        
+            <div className="return-button">
+                    <Link className="return-button-link" to="/Inventory">Return</Link>
+            </div>
+            </div>
         </div>
     )
 }

@@ -1,9 +1,13 @@
-.comicprofile-page{
+.comicprofile-page {
     background-color: lightgray;
     margin: 24px;
     padding-top: 2rem;
-    padding-bottom: 2em;
+    padding-bottom: 0.25rem;
     border-radius: 16px;
+}
+
+.comicprofile-page-inside{
+    
     display: flex;
     justify-content: center;
     flex-direction: row;

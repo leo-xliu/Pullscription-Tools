@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {useState} from "react";
 import CustomerProfileBase from '../../Components/CustomerProfileBase';
-import './PullByUser.css';
 import Header from '../../Components/Header';
 import {LoginContext} from '../../index';
 import  Pagination  from '../../Components/PaginationFeature/Pagination'

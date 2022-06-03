@@ -106,7 +106,7 @@ function Index() {
             <Route path="/FanManagement" element={<FanManagement />} />
                 <Route path="/FanManagement/FanProfile" element={<FanProfile />} />
 
-            <Route path="/Admin" element={<Admin adduser={handleAddUser} remuser={handleRemUser}/>} />
+            <Route path="/Admin" element={<Admin/>} />
           </Routes>
     </BrowserRouter>
   </AdminContext.Provider>
