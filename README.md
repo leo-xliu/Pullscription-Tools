@@ -41,6 +41,8 @@ Note: any changes made to the server directory source code while running the app
 
 ## Pullscription-Tools App Features
 
+This app is specifically targeted at employees and not customers. This means that it does not manage the customer account database which would require a seperate app for. For this reason we have used a mock database for the customers that cannot be changed. 
+
 #### Home Page
 
 The home page consists of a header that contains our app logo which can be clicked on to return you to the home page at any point and location. It also includes a login button on the top right corner that will also display if you are signed in or not by indicating under 'Hello' with either 'Sign in' or 'User'. Once signed in, the login button will have a drop down when hovered over that allows the user to access 'settings' and also logout. 
@@ -71,14 +73,25 @@ Once logged in, you will be redirected to the home page.
 
 #### 'Pull Comics' 
 
+The pull comics page brings the user to to a database of customer profiles from which they can then select from to choose whose comics to pull. Once selected, they are prompted with a list of comics the customer has requests. Then the user can select any of the comics and choose the quanity they will pull for the customer. 
+
 #### 'Inventory' 
 
 The inventory page contains a database of all the comics avaliable as well as how many copies there are. There is a search bar that allows the user to search for specific comic books through their **title**. Each page contains 16 or less comic books and there is a pagination feature allowing the user to move through the list of comics. Each comic panel contains the comics cover, title, publisher, and amount of copies available. Each comic cover can also be clicked on which will take you to another page that gives more details about the comic. 
 
 #### 'Fan Profiles' 
 
+Fan profiles contains the database of customers and once the user selects a customer, they can see the comics the store has pulled for them (set aside) as well as the fullfilled comics (purchased). Under pulled comics, the user has the option to complete or cancel the set aside comic depending on what the customer chooses to do. 
+
 #### 'Check-In' 
+
+Unfortunately this page's functionality has not been implemented completely so it is just a dummy page with a basic structure built with CSS.
 
 #### 'Admin' 
 
+The Admin page is only accessible if logged in as the admin. This feature gives the user the ability to create employee accounts that will be uploaded to a database that stores this information. It also offers the feature for the user to remove employee accounts from the database.
+Note: the admin account is separate from the database so their account cannot be deleted. 
+
 #### 'Settings'
+
+The settings page allows the user to change their password. Unfortunately, we did not have enough time to connect this portion to the database and implement the feature. However, the page has been fully built with HTML and CSS.

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import {  Link, useLocation } from 'react-router-dom';
 import DataBase from '../../Components/DataBase';
 import Data from '../../Components/Data';
 import CustomerProfileBase from '../../Components/CustomerProfileBase';

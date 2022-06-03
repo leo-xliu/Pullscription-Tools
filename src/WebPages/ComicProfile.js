@@ -1,5 +1,5 @@
-import React, { Component, useContext } from 'react';
-import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {  Link, useLocation } from 'react-router-dom';
 import { LoginContext } from '../index';
 import Header from '../Components/Header';
 import './ComicProfile.css';
