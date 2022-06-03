@@ -41,6 +41,26 @@ function Index() {
   const employees = new Map();
   employees.set("psemploy", "employ1");
 
+  const handleAddUser = info => {
+    if (employees.get(info.username) !== undefined){
+      return 1;
+    }
+    else if (info.password.length < 6) {
+      return 2;
+    }
+    else {
+      employees.set(info.username, info.password);
+    }
+  }
+
+  const handleRemUser = info => {
+    if (employees.get(info.username) !== undefined) {
+      employees.delete(info.username);
+    }
+    else {
+      //setRemError("User does not exist!");
+    }
+  }
 
   const handleEmploy = info => {
     if (info.password === employees.get(info.username)) {

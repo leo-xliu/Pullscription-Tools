@@ -9,7 +9,7 @@ export default function Admin({adduser, remuser}) {
     const [addUser, setAddUser] = useState(false);
     const [remUser, setRemUser] = useState(false);
 
-    const [addinfo, setaddInfo] = useState({username: "", password: ""});
+    //const [addinfo, setaddInfo] = useState({username: "", password: ""});
     const [reminfo, setremInfo] = useState({username: "", password: ""});
 
     const submitHandler = e => {
