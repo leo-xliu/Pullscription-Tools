@@ -1,5 +1,5 @@
-import React, { Component, useContext } from 'react';
-import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { LoginContext } from '../index';
 import Header from '../Components/Header';
 import './ComicProfile.css';
@@ -11,8 +11,7 @@ export default function ComicProfile() {
     
     const PUBLISHER = location.state.PUBLISHER
     const MAIN_DESC = location.state.MAIN_DESC
-    //console.log(MAIN_DESC)
-    //console.log(location.state.MAIN_DESC)
+
     const COVER_ARTIST = location.state.COVER_ARTIST
     const STREET_DATE = location.state.STREET_DATE
     const ARTIST = location.state.ARTIST

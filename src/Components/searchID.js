@@ -1,6 +1,3 @@
-import React from 'react'
-import {useState, useEffect} from "react";
-
 function searchID(arr, val) {
 
     console.log("arr: "+arr)
