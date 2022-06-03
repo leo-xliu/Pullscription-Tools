@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import Header from "../Components/Header";
 import {LoginContext} from '../index';
 import './Admin.css';
+import axios from 'axios';
 
 export default function Admin({adduser, remuser}) {
     const loggedIn = useContext(LoginContext);
@@ -25,6 +26,22 @@ export default function Admin({adduser, remuser}) {
     //    }
     }
 
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [admin, setAdmin] = useState(0);
+
+    const addAdmin = () => {
+        axios.post('http://localhost:3001/create', {
+            username: username,
+            password: password
+        }).then (()=>{
+            setAdmin([...admin, {
+                username: username,
+                password: password
+            }]);
+        });
+    };
+
 
     return (
         <div>
@@ -41,14 +58,21 @@ export default function Admin({adduser, remuser}) {
                             <div className="form-section">
                                 <label htmlFor="username">Username: </label>
                                 <input type="text" name="username" id="username" 
-                                    onChange={e => setaddInfo({...addinfo, username: e.target.value})} value={addinfo.username}/>
+                                    //onChange={e => setaddInfo({...addinfo, username: e.target.value})} value={addinfo.username}
+                                    onChange={e=>{
+                                        setUsername(e.target.value);
+                                    }}
+                                    />
                             </div>
                             <div className="form-section">
                                 <label htmlFor="pwd">Password: </label>
                                 <input type="password" name="pwd" id="pwd"
-                                    onChange={e => setaddInfo({...addinfo, password: e.target.value})} value={addinfo.password}/>
+                                    //onChange={e => setaddInfo({...addinfo, password: e.target.value})} value={addinfo.password}
+                                    onChange={e=>{
+                                        setPassword(e.target.value);
+                                    }}/>
                             </div>
-                            <input type="submit" value="Create User" />
+                            <input onClick={addAdmin} type="submit" value="Create User" />
                             {/* <div >{(addError !== "") ? (<div>{addError}</div>) : ""}
                             </div> */}
                         </form>

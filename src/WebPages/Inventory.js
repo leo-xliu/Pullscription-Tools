@@ -87,7 +87,7 @@ useEffect(()=>{
     ))
 
     //console.log({inventoryComics})
-    // var newComics = inventoryComics
+
     //console.log(inventoryComics[0].props.MAIN_DESC)
 
     
