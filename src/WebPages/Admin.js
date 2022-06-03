@@ -8,22 +8,13 @@ export default function Admin({adduser, remuser}) {
     const loggedIn = useContext(LoginContext);
     const [addUser, setAddUser] = useState(false);
     const [remUser, setRemUser] = useState(false);
+    const [message, setMessage] = useState("");
 
-    const [addinfo, setaddInfo] = useState({username: "", password: ""});
     const [reminfo, setremInfo] = useState({username: "", password: ""});
 
     const submitHandler = e => {
         e.preventDefault();
-        // adduser(addinfo);
-    //    if (success === 1){
-    //        setAddError("User already exists!");
-    //    }
-    //    else if (success === 2){
-    //        setAddError("Password needs to be at least 6 characters!");
-    //    }
-    //    else {
-    //         setAddError("");
-    //    }
+        setMessage("User Created!")
     }
 
     const [username, setUsername] = useState('');
@@ -58,7 +49,6 @@ export default function Admin({adduser, remuser}) {
                             <div className="form-section">
                                 <label htmlFor="username">Username: </label>
                                 <input type="text" name="username" id="username" 
-                                    //onChange={e => setaddInfo({...addinfo, username: e.target.value})} value={addinfo.username}
                                     onChange={e=>{
                                         setUsername(e.target.value);
                                     }}
@@ -67,14 +57,12 @@ export default function Admin({adduser, remuser}) {
                             <div className="form-section">
                                 <label htmlFor="pwd">Password: </label>
                                 <input type="password" name="pwd" id="pwd"
-                                    //onChange={e => setaddInfo({...addinfo, password: e.target.value})} value={addinfo.password}
                                     onChange={e=>{
                                         setPassword(e.target.value);
                                     }}/>
                             </div>
                             <input onClick={addAdmin} type="submit" value="Create User" />
-                            {/* <div >{(addError !== "") ? (<div>{addError}</div>) : ""}
-                            </div> */}
+                            <div className="create-message"> {message}</div>
                         </form>
                         </div>
                 ) : ""}

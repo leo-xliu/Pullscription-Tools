@@ -31,6 +31,7 @@ function App() {
 
 
           {/* carousel 1 */}
+          {/* Hard coded simply as a filler for main page */}
           <div className="main-content">
             
             <div className="car-title">
