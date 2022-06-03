@@ -26,8 +26,7 @@ export default function ProfileSettings() {
                                     />
                             </div>
                             <input type="submit" value="Change Password" />
-                            {/* <div >{(addError !== "") ? (<div>{addError}</div>) : ""}
-                            </div> */}
+                            
                         </form>
                         </div>
         </div>

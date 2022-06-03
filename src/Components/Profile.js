@@ -1,5 +1,4 @@
 import React from 'react'
-import ProfileBase from './ProfileBase'
 
 function Profile(props){
     return(

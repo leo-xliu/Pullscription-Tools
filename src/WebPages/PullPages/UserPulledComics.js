@@ -1,8 +1,5 @@
 import React from 'react';
-import {  Link, useLocation } from 'react-router-dom';
-import DataBase from '../../Components/DataBase';
-import Data from '../../Components/Data';
-import CustomerProfileBase from '../../Components/CustomerProfileBase';
+import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import {useState, useContext} from "react";
 import Header from '../../Components/Header';
 import '../Inventory.css';
@@ -20,24 +17,13 @@ export default function UserPulledComics() {
     const THIS_FIRSTNAME = location.state.FIRSTNAME
     const THIS_LASTNAME = location.state.LASTNAME
 
-    //const [pulledComics, setpulledComics] = useState(PULLEDCOMICS)
-
     const [query, setQuery] = useState("")
 
     console.log(PULLEDCOMICS)
 
     const renderPULLEDCOMICS = getUnique(PULLEDCOMICS, "PS_NO")
     const renderPULLEDCOMICSSETASIDE = getUnique(PULLEDCOMICSSETASIDE, "PS_NO")
-
-      // var images = PULLEDCOMICS.map(function(image) {
-      //   return (<img src={image.IMAGE_URL_SMALL} rounded />);
-      //  });
-
-      //  var images2 = PULLEDCOMICSSETASIDE.map(function(image) {
-      //   return (<img src={image.IMAGE_URL_SMALL} rounded />);
-      //  });
-
-       
+    
        var userPulledComics = renderPULLEDCOMICS.filter(data => {
         if (query === '') {
           return data;

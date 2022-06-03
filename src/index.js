@@ -6,13 +6,8 @@ import './index.css';
 import App from './App';
 import LoginPage from './WebPages/LoginPage';
 
-//import webpages
-
-//import Login from './LoginTo/login2';
-
-//import CheckInPages
 import CheckIn from './WebPages/CheckIn';
-// import PullByWeek from './WebPages/PullPages/PullByWeek';
+
 import PullByUser from './WebPages/PullPages/PullByUser';
 import ProfileSettings from './WebPages/ProfileSettings';
 
@@ -91,7 +86,6 @@ function Index() {
             <Route path="/CheckIn" element={<CheckIn />} />
             <Route path="/login" element={<LoginPage logged={handleLogin} admin={handleAdmin} employ={handleEmploy}/>} />
             
-                {/* <Route path="/PullComics/PullByWeek" element={<PullByWeek />} /> */}
                 <Route path="/PullComics/PullByUser" element={<PullByUser />} />
                     <Route path="/PullComics/PullByUser/PulledComics" element={<UserPulledComics />} />
                         <Route path="/PullComics/PullByUser/PulledComics/PulledComicsProcess" element={<PulledComicsProcess />} />
@@ -101,7 +95,6 @@ function Index() {
 
             <Route path="/Inventory" element={<Inventory />} />
                 <Route path="/Inventory/ComicProfile" element={<ComicProfile />} />
-                {/* <Route path={"/Inventory/${data.MAIN_DESC}}"} element={<ComicProfile />} /> */}
 
             <Route path="/FanManagement" element={<FanManagement />} />
                 <Route path="/FanManagement/FanProfile" element={<FanProfile />} />
@@ -116,7 +109,6 @@ function Index() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-//<Route path="/login" element={<Login/>} />
 root.render(
     <Index/>
 );
