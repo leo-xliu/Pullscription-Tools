@@ -20,9 +20,25 @@ app.post('/create', (req, res)=>{
         if (err) {
             throw (err);
         }
+        console.log(result);
         res.send("Created Admin");
     }
     )
+});
+
+app.post('/admin', (req, res)=>{
+    const username = req.body.username;
+    const password = req.body.password;
+    connection.query("SELECT * FROM admindb WHERE un = ? AND pw = ?",
+    [username, password],
+    (err, result)=>{
+        if (err) {
+            throw (err);
+        } else if (result.length > 0) {
+            console.log('welcome');
+            res.redirect('/')
+        }
+    })
 });
 
 //read

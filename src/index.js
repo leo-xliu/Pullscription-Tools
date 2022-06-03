@@ -45,7 +45,7 @@ function Index() {
     if (employees.get(info.username) !== undefined){
       return 1;
     }
-    else if (info.password.legnth < 6) {
+    else if (info.password.length < 6) {
       return 2;
     }
     else {
