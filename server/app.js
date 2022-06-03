@@ -20,7 +20,6 @@ app.post('/create', (req, res)=>{
         if (err) {
             throw (err);
         }
-        console.log(result);
         res.send("Created Admin");
     }
     )
@@ -35,8 +34,7 @@ app.post('/admin', (req, res)=>{
         if (err) {
             throw (err);
         } else if (result.length > 0) {
-            console.log('welcome');
-            res.redirect('/')
+            res.send("Welcome")
         }
     })
 });
@@ -53,6 +51,22 @@ app.get('/inventory', (req, res)=>{
     connection.query("SELECT * FROM products", (err, result) => {
         if (err) throw err;
         res.json(result);
+    })
+})
+
+//update
+
+//delete
+app.delete('/delete:id', (req, res)=>{
+    const id = req.params.id;
+    connection.query("DELETE FROM admindb WHERE un = ?", 
+    id,
+    (err, result)=>{
+        if (err) {
+            throw (err);
+        }
+        res.send("Deleted " + id)
+        console.log(id)
     })
 })
 

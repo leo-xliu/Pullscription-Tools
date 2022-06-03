@@ -42,6 +42,10 @@ export default function Admin({adduser, remuser}) {
         });
     };
 
+    const deleteAdmin = (id) => {
+        axios.delete(`http://localhost:3001/delete:${id}`).then ((res)=>{
+        })
+    };
 
     return (
         <div>
@@ -92,9 +96,13 @@ export default function Admin({adduser, remuser}) {
                         <div className="form-section">
                                 <label htmlFor="username">Username: </label>
                                 <input type="text" name="username" id="username" 
-                                    onChange={e => setremInfo({...reminfo, username: e.target.value})} value={reminfo.username}/>
+                                    //onChange={e => setremInfo({...reminfo, username: e.target.value})} value={reminfo.username}
+                                    onChange={(e)=>{
+                                        setUsername(e.target.value);
+                                    }}
+                                    />
                             </div>
-                            <input type="submit" value="Remove User" />
+                            <input onClick={deleteAdmin(username)} type="submit" value="Remove User" />
                         </form>
                         </div>
                 ) : ""}
