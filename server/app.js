@@ -25,6 +25,20 @@ app.post('/create', (req, res)=>{
     )
 });
 
+app.post('/admin', (req, res)=>{
+    const username = req.body.username;
+    const password = req.body.password;
+    connection.query("SELECT * FROM admindb WHERE un = ? AND pw = ?",
+    [username, password],
+    (err, result)=>{
+        if (err) {
+            throw (err);
+        } else if (result.length > 0) {
+            res.send("Welcome")
+        }
+    })
+});
+
 //read
 app.get('/create', (req, res)=>{
     connection.query("SELECT * FROM admindb", (err, result) => {
@@ -37,6 +51,22 @@ app.get('/inventory', (req, res)=>{
     connection.query("SELECT * FROM products", (err, result) => {
         if (err) throw err;
         res.json(result);
+    })
+})
+
+//update
+
+//delete
+app.delete('/delete:id', (req, res)=>{
+    const id = req.params.id;
+    connection.query("DELETE FROM admindb WHERE un = ?", 
+    id,
+    (err, result)=>{
+        if (err) {
+            throw (err);
+        }
+        res.send("Deleted " + id)
+        console.log(id)
     })
 })
 

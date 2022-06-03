@@ -41,9 +41,9 @@ export default function CsvReader() {
     };
   
     return (
-      <div>
+      <div className="import-outer">
         {/* File Uploader */}
-        <input
+        <input className="import"
           type="file"
           name="file"
           onChange={changeHandler}

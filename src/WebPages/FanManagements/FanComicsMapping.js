@@ -38,8 +38,9 @@ export default function FanComicsMapping(props, arg, props2) {
                       <h3>{image.MAIN_DESC}</h3>
                       <h6>{image.PUBLISHER}</h6>
                       <h4>{searchID(props, image.PS_NO)} {(searchID(props, image.PS_NO)>1)?"Copies":"Copy"}</h4>
-                      {(arg==0) ? <button className="FCbutton2" onClick={() => removeImage(image.PS_NO)}>Cancel</button> : <div></div>}
-                      {(arg==0) ? <button className="FCbutton1" onClick={() => addImage(image.PS_NO)}>Complete</button> : <div></div>}
+                      {(arg==0) ? <button className="FCbutton2" onClick={() => addImage(image.PS_NO)}>Complete</button> : <div></div>}
+                      {(arg==0) ? <button className="FCbutton1" onClick={() => removeImage(image.PS_NO)}>Cancel</button> : <div></div>}
+
                     </div>
                 </div>
         );      

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function LoginForm({Login, error}) {
     const [info, setInfo] = useState({username: "", password: ""});
@@ -6,7 +7,25 @@ function LoginForm({Login, error}) {
     const submitHandler = e => {
         e.preventDefault();
         Login(info);
+        console.log(username);
+        console.log(password)
     }
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [admin, setAdmin] = useState({username: '', password: ''});
+
+    const login = () => {
+        axios.post('http://localhost:3001/admin', {
+            username: username,
+            password: password
+        }).then (()=>{
+            setAdmin([...admin, {
+                username: username,
+                password: password
+            }]);
+        });
+    };
 
     return (
     <div className="loginform"> 
@@ -15,16 +34,25 @@ function LoginForm({Login, error}) {
                     <div className="form-section">
                         <label htmlFor="username">Username: </label>
                         <input type="text" name="username" id="username" 
-                            onChange={e => setInfo({...info, username: e.target.value})} value={info.username} />
+                            onChange={e => setInfo({...info, username: e.target.value})} value={info.username} 
+                            // onChange={(e)=>{
+                            //     setUsername(e.target.value);
+                            //     //console.log(username + ' in e');
+                            // }}
+                            />
                     </div>
                     <div className="form-section">
                         <label htmlFor="pwd">Password: </label>
                         <input type="password" name="pwd" id="pwd"
-                            onChange={e => setInfo({...info, password: e.target.value})} value={info.password} />
+                            onChange={e => setInfo({...info, password: e.target.value})} value={info.password} 
+                            // onChange={(e)=>{
+                            //     setPassword(e.target.value);
+                            // }}
+                            />
                     </div>
                     <div className="errorMessage">{(error !== "") ? (<div>{error}</div>) : ""}
                         </div>
-                    <input type="submit" value="Login" />
+                    <input onClick={login} type="submit" value="Login" />
         </form>
     </div>
     )
