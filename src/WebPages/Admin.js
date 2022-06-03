@@ -8,22 +8,19 @@ export default function Admin({adduser, remuser}) {
     const loggedIn = useContext(LoginContext);
     const [addUser, setAddUser] = useState(false);
     const [remUser, setRemUser] = useState(false);
-
-    //const [addinfo, setaddInfo] = useState({username: "", password: ""});
-    const [reminfo, setremInfo] = useState({username: "", password: ""});
+    const [createMessage, setCreateMessage] = useState("");
+    const [createMessage2, setCreateMessage2] = useState("");
 
     const submitHandler = e => {
         e.preventDefault();
-        // adduser(addinfo);
-    //    if (success === 1){
-    //        setAddError("User already exists!");
-    //    }
-    //    else if (success === 2){
-    //        setAddError("Password needs to be at least 6 characters!");
-    //    }
-    //    else {
-    //         setAddError("");
-    //    }
+        setCreateMessage("User Created!");
+        
+    }
+
+    const submitHandler2 = e => {
+        e.preventDefault();
+        setCreateMessage2("User Removed!");
+        
     }
 
     const [username, setUsername] = useState('');
@@ -62,7 +59,6 @@ export default function Admin({adduser, remuser}) {
                             <div className="form-section">
                                 <label htmlFor="username">Username: </label>
                                 <input type="text" name="username" id="username" 
-                                    //onChange={e => setaddInfo({...addinfo, username: e.target.value})} value={addinfo.username}
                                     onChange={e=>{
                                         setUsername(e.target.value);
                                     }}
@@ -71,14 +67,12 @@ export default function Admin({adduser, remuser}) {
                             <div className="form-section">
                                 <label htmlFor="pwd">Password: </label>
                                 <input type="password" name="pwd" id="pwd"
-                                    //onChange={e => setaddInfo({...addinfo, password: e.target.value})} value={addinfo.password}
                                     onChange={e=>{
                                         setPassword(e.target.value);
                                     }}/>
                             </div>
                             <input onClick={addAdmin} type="submit" value="Create User" />
-                            {/* <div >{(addError !== "") ? (<div>{addError}</div>) : ""}
-                            </div> */}
+                            <div className="create-message"> {createMessage}</div>
                         </form>
                         </div>
                 ) : ""}
@@ -92,17 +86,17 @@ export default function Admin({adduser, remuser}) {
                     </div>
                     {(remUser === true) ? (     
                         <div className="add-user-form">  
-                        <form className="form-page" onSubmit={submitHandler}>
+                        <form className="form-page" onSubmit={submitHandler2}>
                         <div className="form-section">
                                 <label htmlFor="username">Username: </label>
                                 <input type="text" name="username" id="username" 
-                                    //onChange={e => setremInfo({...reminfo, username: e.target.value})} value={reminfo.username}
                                     onChange={(e)=>{
                                         setUsername(e.target.value);
                                     }}
                                     />
                             </div>
                             <input onClick={deleteAdmin(username)} type="submit" value="Remove User" />
+                            <div className="create-message"> {createMessage2}</div>
                         </form>
                         </div>
                 ) : ""}
