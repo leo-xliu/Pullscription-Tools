@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import {Link, useLocation } from 'react-router-dom';
 import {useState} from "react";
-import CustomerProfileBase from '../../Components/CustomerProfileBase';
 import FanComicsMapping from './FanComicsMapping';
 import { LoginContext } from '../../index';
 import Header from '../../Components/Header';
